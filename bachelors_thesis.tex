@@ -321,16 +321,16 @@
 %%
 
 
-\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
-\renewcommand*{\nameyeardelim}{\addcomma\space}
-\AtBeginBibliography{\renewcommand*{\mkbibnamefamily}[1]{\MakeUppercase{#1}}}
+%\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+%\renewcommand*{\nameyeardelim}{\addcomma\space}
+%\AtBeginBibliography{\renewcommand*{\mkbibnamefamily}[1]{\MakeUppercase{#1}}}
 \usepackage{color, colortbl}
 
 \definecolor{McKBlue}{RGB}{221,235,247}
 \definecolor{topgrey}{RGB}{217,217,217}
 \definecolor{McKBlue2}{RGB}{0,0,0}
 
-\addbibresource{ref.bib}
+%\addbibresource{ref.bib}
 \usepackage{parskip}
 \setlength{\parindent}{0pt}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
@@ -419,9 +419,9 @@ Swedish abstract
 \section{Introduction}
 \label{introdukcion}
 
-In this bachelors thesis the problem of distributed consensus and the different approaches to solving it are discussed. Distributed consensus in a distributed system means reaching a common agreement among the agents involved in said system. There are both classical and more modern approaches to solving this problems in both a synchronous state, as well as in a asynchronous state. 
+In this bachelor's thesis the problem of distributed consensus and the different approaches to solving it are discussed. Distributed consensus in a distributed system means reaching a common agreement among the agents involved in said system. There are both classical and more modern approaches to solving this problems in both a synchronous state, as well as in a asynchronous state. 
 
-The existing material and research in this field is vast, both through books and academic research. Some specific names stand out as for example Nancy Lynch and her book Distributed Algorithms \autocite{distributed_algorithms}, as well as Leslie Lamport work on formalization of the Byzantine problem \autocite{byzantine_generals}. There is also good material on modern approaches, such as population protocols done by for example James Aspnes \autocite{simple_populaiton_protocol}.
+The existing material and research in this field is vast, both through books and academic research. Some specific names stand out as for example Nancy Lynch and her book Distributed Algorithms \cite{distributed_algorithms}, as well as Leslie Lamport work on formalization of the Byzantine problem \cite{byzantine_generals}. There is also good material on modern approaches, such as population protocols done by for example James Aspnes \cite{simple_populaiton_protocol}.
 \clearpage
 
 \section{Research objectives}
@@ -476,14 +476,16 @@ Below is a a table with the planned time-allocation for the different phases and
 \clearpage
 %% L\"ahdeluettelo
 
-\thesisbibliography
+\bibliographystyle{plain}
+\bibliography{ref}
+%\thesisbibliography
 
 %\begin{thebibliography}{99}
 %\end{thebibliography}
 
 
 
-\printbibliography
+%\printbibliography
 
 %% Appendices
 %% If you don't have appendices, remove \clearpage and \thesisappendix below.
