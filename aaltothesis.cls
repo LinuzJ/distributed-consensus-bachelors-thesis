@@ -61,7 +61,7 @@
 \RequirePackage{etoolbox}% Defines boolean/toggle variables, ifs, AtEndPreamble..
 %
 \newcommand*{\MainLang}{}%
-\DeclareOption{swedis}{%
+\DeclareOption{english}{%
   \AtEndOfClass{\main@language{english}}%
   \renewcommand*{\MainLang}{english}%
 }%
@@ -156,7 +156,7 @@
   \iftoggle{UTF}{\hypersetup{pdfencoding=unicode}}{}%
   \hypersetup{pdfpagemode=UseNone, bookmarksnumbered=true}%
   \iftoggle{ONLINE}{%
-  	\hypersetup{colorlinks=true, urlcolor=McKBlue2, linkcolor=McKBlue2, citecolor=McKBlue2}%
+  	\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}%
   }{}%
 }{%
   \AtEndPreamble{%
@@ -171,7 +171,7 @@
   }{}%
   \hypersetup{pdfpagemode=UseNone, bookmarksnumbered=true}%
   \iftoggle{ONLINE}{%
-  	\hypersetup{colorlinks=true, urlcolor=McKBlue2, linkcolor=McKBlue2, citecolor=McKBlue2}%
+  	\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}%
   }{%
 	\hypersetup{colorlinks=false}
   }%
