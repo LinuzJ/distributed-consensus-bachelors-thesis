@@ -6,6 +6,25 @@
     ISBN = {9780080504704}
 }
 
+@book{Aguilera_replication_2010,
+  author    = {Marcos Kawazoe Aguilera},
+  editor    = {Bernadette Charron{-}Bost and
+               Fernando Pedone and
+               Andr{\'{e}} Schiper},
+  title     = {Stumbling over Consensus Research: Misunderstandings and Issues},
+  booktitle = {Replication: Theory and Practice},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {5959},
+  pages     = {59--72},
+  publisher = {Springer},
+  year      = {2010},
+  url       = {https://doi.org/10.1007/978-3-642-11294-2\_4},
+  doi       = {10.1007/978-3-642-11294-2\_4},
+  timestamp = {Wed, 07 Dec 2022 23:14:19 +0100},
+  biburl    = {https://dblp.org/rec/conf/replication/Aguilera10.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
 @article{angluinSimplePopulationProtocol2008,
   title = {A Simple Population Protocol for Fast Robust Approximate Majority},
   author = {Angluin, Dana and Aspnes, James and Eisenstat, David},
@@ -78,6 +97,21 @@
   file = {/Users/linusjern/Zotero/storage/ELTIN3T4/Doty et al. - 2022 - A time and space optimal stable population protoco.pdf}
 }
 
+@inproceedings{driscollRealByzantineGenerals2004,
+  title = {The Real {{Byzantine Generals}}},
+  booktitle = {The 23rd {{Digital Avionics Systems Conference}} ({{IEEE Cat}}. {{No}}.{{04CH37576}})},
+  author = {Driscoll, K. and Hall, B. and Paulitsch, M. and Zumsteg, P. and Sivencrona, H.},
+  year = {2004},
+  pages = {6.D.4-61-11},
+  publisher = {{IEEE}},
+  address = {{Salt Lake City, UT, USA}},
+  doi = {10.1109/DASC.2004.1390734},
+  abstract = {In contrast to previous papers on the Byzantine Generals Problem, this paper examines the problem from a practical, lower-level, phenomena point of view. The goal is to dispel a common belief that the problem is a myth (potentially arising from the anthropomorphic nature of previous literature). This paper gives practical, succinct definitions for Byzantine fault and failure. It describes how these arise and are propagated in electrical signals and ``digital'' circuitry. The paper describes actual occurrences of Byzantine faults in several different systems. A taxonomy of methods for combating the problem is presented with examples of each method. The paper brings to fore the following underappreciated facts: (1) cryptography is not a useful solution to the Problem in actual systems, (2) most solutions to the Problem must include a ``Byzantine filter'' (a circuit that converts a Byzantine signal to a non-Byzantine signal).},
+  isbn = {978-0-7803-8539-9},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/FW3JIIWP/Driscoll et al. - 2004 - The real Byzantine Generals.pdf}
+}
+
 @article{gartnerFundamentalsFaulttolerantDistributed1999,
   title = {Fundamentals of Fault-Tolerant Distributed Computing in Asynchronous Environments},
   author = {G{\"a}rtner, Felix C.},
@@ -118,6 +152,22 @@
   abstract = {As used in practice, traditional consensus algorithms require three message delays before any process can learn the chosen value. Fast Paxos is an extension of the classic Paxos algorithm that allows the value to be learned in two message delays. How and why the algorithm works are explained informally, and a TLA+ specification of the algorithm appears as an appendix.},
   langid = {english},
   file = {/Users/linusjern/Zotero/storage/K2GT3LHI/Lamport - 2006 - Fast Paxos.pdf}
+}
+
+@article{lamportWeakByzantineGenerals1983,
+  title = {The {{Weak Byzantine Generals Problem}}},
+  author = {Lamport, L.},
+  year = {1983},
+  month = jul,
+  journal = {Journal of the ACM},
+  volume = {30},
+  number = {3},
+  pages = {668--676},
+  issn = {0004-5411, 1557-735X},
+  doi = {10.1145/2402.322398},
+  abstract = {The Byzantine Generals Problem requires processes to reach agreement upon a value even though some of them may fad. It is weakened by allowing them to agree upon an "incorrect" value if a failure occurs. The transaction eormmt problem for a distributed database Js a special case of the weaker problem. It is shown that, like the original Byzantine Generals Problem, the weak version can be solved only ff fewer than one-third of the processes may fad. Unlike the onginal problem, an approximate solution exists that can tolerate arbaranly many failures.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/XBSV24ZJ/Lamport - 1983 - The Weak Byzantine Generals Problem.pdf}
 }
 
 @article{ongaroSearchUnderstandableConsensus,
