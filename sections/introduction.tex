@@ -17,6 +17,7 @@ This formalization provides an easily understandable base with which you can vis
 The way in which processes within a distributed system communicate with each other is another important aspect that should be taken into account when handling the distributed consensus problem. The distributed consensus problem may be modelled as a synchronous or asynchronous system. A synchronous system is a system where each process runs using a global clock or perfectly synchronized clocks, while there is no global clock nor consistent clock rate in a asynchronous system. Asynchronous systems introduce additional complexity and cannot achieve a completely fault tolerant state \cite{fischerImpossibilityDistributedConsensus}.
 
 %% Existing solutions
+There are multiple established solutions to the distributed consensus problem, both in the synchronous and asynchronous environment. Examples of established solutions are Paxos \cite{lamportFastPaxos2006}, Raft \cite{ongaroSearchUnderstandableConsensus} and Practical Synchronous Byzantine Consensus \cite{renPracticalSynchronousByzantine} in the synchronous environment and pBFT \cite{castroPracticalByzantineFault} and population protocols \cite{aspnesIntroductionPopulationProtocols2009} in the asynchronous environment.
 
 \clearpage
 
@@ -33,8 +34,6 @@ The paper is a literature study that is divided into three parts. The first two 
     \item Distinguish the differences between the modern and classical approaches
     \item Deep dive into modern population protocol algorithms
 \end{itemize}
-
-Due to the fact that the algorithms and topic are quite complex, the algorithms in this paper will be discussed and compared on quite a high level.
 
 \subsection{}
 
