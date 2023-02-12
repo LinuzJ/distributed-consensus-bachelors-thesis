@@ -6,140 +6,147 @@
     ISBN = {9780080504704}
 }
 
-@article{Lamport_Byzantine_1982,
-  author    = {Leslie Lamport and
-               Robert E. Shostak and
-               Marshall C. Pease},
-  title     = {The Byzantine Generals Problem},
-  journal   = {{ACM} Trans. Program. Lang. Syst.},
-  volume    = {4},
-  number    = {3},
-  pages     = {382--401},
-  year      = {1982},
-  url       = {http://doi.acm.org/10.1145/357172.357176},
-  doi       = {10.1145/357172.357176},
-  timestamp = {Wed, 14 Nov 2018 10:30:40 +0100},
-  biburl    = {https://dblp.org/rec/journals/toplas/LamportSP82.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@article{angluinSimplePopulationProtocol2008,
+  title = {A Simple Population Protocol for Fast Robust Approximate Majority},
+  author = {Angluin, Dana and Aspnes, James and Eisenstat, David},
+  year = {2008},
+  month = jul,
+  journal = {Distributed Computing},
+  volume = {21},
+  number = {2},
+  pages = {87--102},
+  issn = {0178-2770, 1432-0452},
+  doi = {10.1007/s00446-008-0059-z},
+  abstract = {We describe and analyze a 3-state one-way population protocol to compute approximate majority in the model in which pairs of agents are drawn uniformly at random to interact. Given an initial configuration of x's, y's and blanks that contains at least one non-blank, the goal is for the agents to reach consensus on one of the values x or y. Additionally, the value chosen should be the majority non-blank initial value, provided it exceeds the minority by a sufficient margin. We prove that with high probability n agents reach consensus in O(n log n) interactions and the evartatllyueeaosfcthto{$\omega$}ols(ee{$\surd$}rnantiisnlogthgBenym)z.aaTjnohtriiinsteypbproerohtovacivdoieol drhiatnhsaotth(i{$\surd$}etsanidn)diotiiftaitolhmneaaalrgpgerinnotpiss-, making it the first known population protocol that tolerates Byzantine agents.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/YGJPTAWL/Angluin et al. - 2008 - A simple population protocol for fast robust appro.pdf}
 }
 
-@article{Aspnes_Simple_2008,
-  title={A simple population protocol for fast robust approximate majority},
-  author={Dana Angluin, James Aspnes, David Eisenstat},
-  journal={Distributed Computing},
-  volume={21},
-  pages={87–102},
-  year={2008},
-  publisher={Springer}
+@incollection{aspnesIntroductionPopulationProtocols2009,
+  title = {An {{Introduction}} to {{Population Protocols}}},
+  booktitle = {Middleware for {{Network Eccentric}} and {{Mobile Applications}}},
+  author = {Aspnes, James and Ruppert, Eric},
+  editor = {Garbinato, Beno{\^i}t and Miranda, Hugo and Rodrigues, Lu{\'i}s},
+  year = {2009},
+  pages = {97--120},
+  publisher = {{Springer Berlin Heidelberg}},
+  address = {{Berlin, Heidelberg}},
+  doi = {10.1007/978-3-540-89707-1_5},
+  isbn = {978-3-540-89706-4 978-3-540-89707-1},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/UIY98BI2/Aspnes and Ruppert - 2009 - An Introduction to Population Protocols.pdf}
 }
 
-@article{Aspnes_Intro_2007,
-  author    = {James Aspnes and
-               Eric Ruppert},
-  title     = {An Introduction to Population Protocols},
-  journal   = {Bull. {EATCS}},
-  volume    = {93},
-  pages     = {98--117},
-  year      = {2007},
-  timestamp = {Thu, 18 Jun 2020 22:07:40 +0200},
-  biburl    = {https://dblp.org/rec/journals/eatcs/AspnesR07.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@inproceedings{bankhamerPopulationProtocolsExact2022,
+  title = {Population {{Protocols}} for {{Exact Plurality Consensus}}: {{How}} a Small Chance of Failure Helps to Eliminate Insignificant Opinions},
+  shorttitle = {Population {{Protocols}} for {{Exact Plurality Consensus}}},
+  booktitle = {Proceedings of the 2022 {{ACM Symposium}} on {{Principles}} of {{Distributed Computing}}},
+  author = {Bankhamer, Gregor and Berenbrink, Petra and Biermeier, Felix and Els{\"a}sser, Robert and Hosseinpour, Hamed and Kaaser, Dominik and Kling, Peter},
+  year = {2022},
+  month = jul,
+  pages = {224--234},
+  publisher = {{ACM}},
+  address = {{Salerno Italy}},
+  doi = {10.1145/3519270.3538447},
+  abstract = {We consider the plurality consensus problem for population protocols. Here, {$\mathsl{n}$} anonymous agents start each with one of {$\mathsl{k}$} opinions. Their goal is to agree on the initially most frequent opinion (the plurality opinion) via random, pairwise interactions. Exact plurality consensus refers to the requirement that the plurality opinion must be identified even if the bias (difference between the most and second most frequent opinion) is only 1.},
+  isbn = {978-1-4503-9262-4},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/VIRNKMK7/Bankhamer et al. - 2022 - Population Protocols for Exact Plurality Consensus.pdf}
 }
 
-@inproceedings{Doty_Majority_2021,
-  author    = {David Doty and
-               Mahsa Eftekhari and
-               Leszek Gasieniec and
-               Eric E. Severson and
-               Przemyslaw Uznanski and
-               Grzegorz Stachowiak},
-  title     = {A time and space optimal stable population protocol solving exact
-               majority},
-  booktitle = {62nd {IEEE} Annual Symposium on Foundations of Computer Science, {FOCS}
-               2021, Denver, CO, USA, February 7-10, 2022},
-  pages     = {1044--1055},
+@article{castroPracticalByzantineFault,
+  title = {Practical {{Byzantine Fault Tolerance}}},
+  author = {Castro, Miguel and Liskov, Barbara},
+  abstract = {This paper describes a new replication algorithm that is able to tolerate Byzantine faults. We believe that Byzantinefault-tolerant algorithms will be increasingly important in the future because malicious attacks and software errors are increasingly common and can cause faulty nodes to exhibit arbitrary behavior. Whereas previous algorithms assumed a synchronous system or were too slow to be used in practice, the algorithm described in this paper is practical: it works in asynchronous environments like the Internet and incorporates several important optimizations that improve the response time of previous algorithms by more than an order of magnitude. We implemented a Byzantine-fault-tolerant NFS service using our algorithm and measured its performance. The results show that our service is only 3\% slower than a standard unreplicated NFS.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/TGGXLXLU/Castro and Liskov - Practical Byzantine Fault Tolerance.pdf}
+}
+
+@inproceedings{dotyTimeSpaceOptimal2022,
+  title = {A Time and Space Optimal Stable Population Protocol Solving Exact Majority},
+  booktitle = {2021 {{IEEE}} 62nd {{Annual Symposium}} on {{Foundations}} of {{Computer Science}} ({{FOCS}})},
+  author = {Doty, David and Eftekhari, Mahsa and Gasieniec, Leszek and Severson, Eric and Uznanski, Przemyslaw and Stachowiak, Grzegorz},
+  year = {2022},
+  month = feb,
+  pages = {1044--1055},
   publisher = {{IEEE}},
-  year      = {2021},
-  url       = {https://doi.org/10.1109/FOCS52979.2021.00104},
-  doi       = {10.1109/FOCS52979.2021.00104},
-  timestamp = {Wed, 09 Mar 2022 12:12:54 +0100},
-  biburl    = {https://dblp.org/rec/conf/focs/DotyEGSUS21.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+  address = {{Denver, CO, USA}},
+  doi = {10.1109/FOCS52979.2021.00104},
+  abstract = {We study population protocols, a model of distributed computing appropriate for modeling wellmixed chemical reaction networks and other physical systems where agents exchange information in pairwise interactions, but have no control over their schedule of interaction partners. The majority problem is that of determining in an initial population of n agents, each with one of two opinions A or B, whether there are more A, more B, or a tie. A stable protocol solves this problem with probability 1 by eventually entering a configuration in which all agents agree on a correct consensus decision of A, B, or T, from which the consensus cannot change. We describe a protocol solving this problem using O(log n) states (log log n + O(1) bits of memory) and optimal expected time O(log n). The number of states O(log n) is known to be optimal for polylogarithmic time stable protocols that are ``output dominant'' and ``monotone'' [1]. These are two natural constraints satisfied by our protocol, making it simultaneously time- and state-optimal for that class. We introduce a key technique called a ``fixed resolution clock'' to achieve partial synchronization.},
+  isbn = {978-1-66542-055-6},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/ELTIN3T4/Doty et al. - 2022 - A time and space optimal stable population protoco.pdf}
 }
 
-@inproceedings{Bankhamer_Plurality_2022,
-  author    = {Gregor Bankhamer and
-               Petra Berenbrink and
-               Felix Biermeier and
-               Robert Els{\"{a}}sser and
-               Hamed Hosseinpour and
-               Dominik Kaaser and
-               Peter Kling},
-  editor    = {Alessia Milani and
-               Philipp Woelfel},
-  title     = {Population Protocols for Exact Plurality Consensus: How a small chance
-               of failure helps to eliminate insignificant opinions},
-  booktitle = {{PODC} '22: {ACM} Symposium on Principles of Distributed Computing,
-               Salerno, Italy, July 25 - 29, 2022},
-  pages     = {224--234},
-  publisher = {{ACM}},
-  year      = {2022},
-  url       = {https://doi.org/10.1145/3519270.3538447},
-  doi       = {10.1145/3519270.3538447},
-  timestamp = {Mon, 25 Jul 2022 15:17:07 +0200},
-  biburl    = {https://dblp.org/rec/conf/podc/BankhamerBBEHKK22.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@article{gartnerFundamentalsFaulttolerantDistributed1999,
+  title = {Fundamentals of Fault-Tolerant Distributed Computing in Asynchronous Environments},
+  author = {G{\"a}rtner, Felix C.},
+  year = {1999},
+  month = mar,
+  journal = {ACM Computing Surveys},
+  volume = {31},
+  number = {1},
+  pages = {1--26},
+  issn = {0360-0300, 1557-7341},
+  doi = {10.1145/311531.311532},
+  abstract = {Fault tolerance in distributed computing is a wide area with a significant body of literature that is vastly diverse in methodology and terminology. This paper aims at structuring the area and thus guiding readers into this interesting field. We use a formal approach to define important terms like               fault, fault tolerance               , and               redundancy               . This leads to four distinct forms of fault tolerance and to two main phases in achieving them:               detection               and               correction               . We show that this can help to reveal inherently fundamental structures that contribute to understanding and unifying methods and terminology. By doing this, we survey many existing methodologies and discuss their relations. The underlying system model is the   close-to-reality asynchronous message-passing model of distributed computing.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/88KC66CI/Gärtner - 1999 - Fundamentals of fault-tolerant distributed computi.pdf}
 }
 
-@inproceedings{Lynch_Tradeoff_1992,
-  author    = {George Varghese and
-               Nancy A. Lynch},
-  editor    = {Norman C. Hutchinson},
-  title     = {A Tradeoff Between Safety and Liveness for Randomized Coordinated
-               Attack Protocols},
-  booktitle = {Proceedings of the Eleventh Annual {ACM} Symposium on Principles of
-               Distributed Computing, Vancouver, British Columbia, Canada, August
-               10-12, 1992},
-  pages     = {241--250},
-  publisher = {{ACM}},
-  year      = {1992},
-  url       = {https://doi.org/10.1145/135419.135463},
-  doi       = {10.1145/135419.135463},
-  timestamp = {Tue, 06 Nov 2018 11:07:19 +0100},
-  biburl    = {https://dblp.org/rec/conf/podc/VargheseL92.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@article{lamportByzantineGeneralsProblem,
+  title = {The {{Byzantine Generals Problem}}},
+  author = {Lamport, Leslie and Shostak, Robert and Pease, Marshall},
+  journal = {ACM Transactions on Programming Languages and Systems},
+  volume = {4},
+  number = {3},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/5A3ARTRN/Lamport et al. - The Byzantine Generals Problem.pdf}
 }
 
-@inproceedings{Lamport_Paxos_2002,
-  author    = {Leslie Lamport},
-  editor    = {Alain Bui and
-               Hac{\`{e}}ne Fouchal},
-  title     = {Paxos Made Simple, Fast, and Byzantine},
-  booktitle = {Procedings of the 6th International Conference on Principles of Distributed
-               Systems. {OPODIS} 2002, Reims, France, December 11-13, 2002},
-  series    = {Studia Informatica Universalis},
-  volume    = {3},
-  pages     = {7--9},
-  publisher = {Suger, Saint-Denis, rue Catulienne, France},
-  year      = {2002},
-  timestamp = {Tue, 20 Jan 2004 14:15:23 +0100},
-  biburl    = {https://dblp.org/rec/conf/opodis/Lamport02.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@article{lamportFastPaxos2006,
+  title = {Fast {{Paxos}}},
+  author = {Lamport, Leslie},
+  year = {2006},
+  month = oct,
+  journal = {Distributed Computing},
+  volume = {19},
+  number = {2},
+  pages = {79--103},
+  issn = {0178-2770, 1432-0452},
+  doi = {10.1007/s00446-006-0005-x},
+  abstract = {As used in practice, traditional consensus algorithms require three message delays before any process can learn the chosen value. Fast Paxos is an extension of the classic Paxos algorithm that allows the value to be learned in two message delays. How and why the algorithm works are explained informally, and a TLA+ specification of the algorithm appears as an appendix.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/K2GT3LHI/Lamport - 2006 - Fast Paxos.pdf}
 }
 
-@inproceedings{Ongaro_Raft_2014,
-  author    = {Diego Ongaro and
-               John K. Ousterhout},
-  editor    = {Garth Gibson and
-               Nickolai Zeldovich},
-  title     = {In Search of an Understandable Consensus Algorithm},
-  booktitle = {2014 {USENIX} Annual Technical Conference, {USENIX} {ATC} '14, Philadelphia,
-               PA, USA, June 19-20, 2014},
-  pages     = {305--319},
-  publisher = {{USENIX} Association},
-  year      = {2014},
-  url       = {https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro},
-  timestamp = {Mon, 01 Feb 2021 08:43:54 +0100},
-  biburl    = {https://dblp.org/rec/conf/usenix/OngaroO14.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@article{ongaroSearchUnderstandableConsensus,
+  title = {In {{Search}} of an {{Understandable Consensus Algorithm}}},
+  author = {Ongaro, Diego and Ousterhout, John},
+  abstract = {Raft is a consensus algorithm for managing a replicated log. It produces a result equivalent to (multi-)Paxos, and it is as efficient as Paxos, but its structure is different from Paxos; this makes Raft more understandable than Paxos and also provides a better foundation for building practical systems. In order to enhance understandability, Raft separates the key elements of consensus, such as leader election, log replication, and safety, and it enforces a stronger degree of coherency to reduce the number of states that must be considered. Results from a user study demonstrate that Raft is easier for students to learn than Paxos. Raft also includes a new mechanism for changing the cluster membership, which uses overlapping majorities to guarantee safety.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/65ZJFLHL/Ongaro and Ousterhout - In Search of an Understandable Consensus Algorithm.pdf}
+}
+
+@article{renPracticalSynchronousByzantine,
+  title = {Practical {{Synchronous Byzantine Consensus}}},
+  author = {Ren, Ling and Nayak, Kartik and Abraham, Ittai and Devadas, Srinivas},
+  abstract = {We present new protocols for Byzantine state machine replication and Byzantine agreement in the synchronous and authenticated setting. The celebrated PBFT state machine replication protocol tolerates f Byzantine faults in an asynchronous setting using 3f + 1 replicas, and has since been studied or deployed by numerous works. In this work, we improve the Byzantine fault tolerance to n = 2f + 1 by utilizing the synchrony assumption. The key challenge is to ensure a quorum intersection at one honest replica. Our solution is to rely on the synchrony assumption to form a post-commit quorum of size 2f + 1, which intersects at f + 1 replicas with any pre-commit quorums of size f + 1. Our protocol also solves synchronous authenticated Byzantine agreement in fewer rounds than the best existing solution (Katz and Koo, 2006). A challenge in this direction is to handle non-simultaneous termination, which we solve by introducing a notion of virtual participation after termination. Our protocols may be applied to build practical synchronous Byzantine fault tolerant systems and improve cryptographic protocols such as secure multiparty computation and cryptocurrencies when synchrony can be assumed.},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/6PSESNID/Ren et al. - Practical Synchronous Byzantine Consensus.pdf}
+}
+
+@inproceedings{vargheseTradeoffSafetyLiveness1992,
+  title = {A Tradeoff between Safety and Liveness for Randomized Coordinated Attack Protocols},
+  booktitle = {Proceedings of the Eleventh Annual {{ACM}} Symposium on {{Principles}} of Distributed Computing  - {{PODC}} '92},
+  author = {Varghese, George and Lynch, Nancy A.},
+  year = {1992},
+  pages = {241--250},
+  publisher = {{ACM Press}},
+  address = {{Vancouver, British Columbia, Canada}},
+  doi = {10.1145/135419.135463},
+  abstract = {We study randomized, synchronous protocols for coordinated attack. Such protocols trade offthe number of rounds (N), the worst case probability of disagreement (U), and the probability that all generals attack (Z). We prove a nearly tight bound on the tradeoff between L and U (L/U \textasciitilde{} N) for a strong adversary that destroys any subset of messages. Our techniques may be useful for other problems that allow a nonzero probability of disagreement.},
+  isbn = {978-0-89791-495-6},
+  langid = {english},
+  file = {/Users/linusjern/Zotero/storage/L2UY79PE/Varghese and Lynch - 1992 - A tradeoff between safety and liveness for randomi.pdf}
 }
