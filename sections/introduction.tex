@@ -10,12 +10,13 @@ Distributed systems are a crucial part of the modern digital infrastructure that
 %% Byzantine generals problem
 A common way of formalizing the problem of distributed consensus is through the Byzantine Generals Problem, introduced by Leslie Lamport. This formalization describes the problem through a case where a number of generals are trying to coordinate an attack on a city. Some of the generals may prefer to attack and some may prefer to retreat, and they have to reach a shared agreement on whether to attack or not. Additionally, there may be further complications due to treasonous generals spreading sub optimal information. There is also the complication brought by the fact that the only way for the generals to talk to each other is to send a messenger on foot, who might get captured or injured, to delivery message \cite{lamportByzantineGeneralsProblem}. 
 %% Byzantine fault
-The previously mentioned condition that describes the possibility of a part of the system failing (messenger getting injured or mischievous general in Byzantine terms) is refereed to as a Byzantine fault \cite{lamportByzantineGeneralsProblem}. In short, a Byzantine fault is any fault which makes different observers see different results \cite{driscollRealByzantineGenerals2004}.
+The previously mentioned condition that describes the possibility of a part of the system failing (messenger getting injured or mischievous general in Byzantine terms) is refereed to as a Byzantine fault \cite{lamportByzantineGeneralsProblem}. In short, a Byzantine fault is any fault that makes different observers see different results \cite{driscollRealByzantineGenerals2004}.
 This formalization provides an easily understandable base with which you can visualize the different solutions.
 
 %% Syncrounous vs Asynchronous problem
-The way in which processes within a distributed system communicate with each other is another important aspect that should be taken into when viewing the distributed consensus problem. The distributed consensus problem may be modelled as a synchronous or asynchronous system. A synchronous system is a system where each process runs using a global clock or perfectly synchronized clocks, while there is no global clock nor consistent clock rate in a asynchronous system.
+The way in which processes within a distributed system communicate with each other is another important aspect that should be taken into account when handling the distributed consensus problem. The distributed consensus problem may be modelled as a synchronous or asynchronous system. A synchronous system is a system where each process runs using a global clock or perfectly synchronized clocks, while there is no global clock nor consistent clock rate in a asynchronous system. Asynchronous systems introduce additional complexity and cannot achieve a completely fault tolerant state \cite{fischerImpossibilityDistributedConsensus}.
 
+%% Existing solutions
 
 \clearpage
 
