@@ -1,5 +1,8 @@
 \documentclass[english, 12pt, a4paper, sci, utf8, a-1b, online]{aaltothesis}
 
+
+
+\usepackage[parfill]{parskip}
 \usepackage{float}
 \usepackage{graphicx}
 %% Math fonts, symbols, and formatting
@@ -43,18 +46,10 @@
 TO DO!
 }
 
-%% Copyright text. Copyright of a work is with the creator/author of the work
-%% regardless of whether the copyright mark is explicitly in the work or not.
-%% You may, if you wish, publish your work under a Creative Commons license (see
-%% creaticecommons.org), in which case the license text must be visible in the
-%% work. Write here the copyright text you want. It is written into the metadata
-%% of the pdf file as well.
-%% Syntax:
-%% \copyrigthtext{metadata text}{text visible on the page}
-
 \copyrighttext{Copyright \noexpand\copyright\ \number\year\ \ThesisAuthor}
 {Copyright \copyright{} \number\year{} \ThesisAuthor}
 
+%------------------------------------------------------------------------------------------------
 
 \begin{document}
 
@@ -63,16 +58,9 @@ TO DO!
 
 
 %% Typeset the copyright text.
-%% If you wish, you may leave out the copyright text from the human-readable
-%% page of the pdf file. This may seem like a attractive idea for the printed
-%% document especially if "Copyright (c) yyyy Eddie Engineer" is the only text
-%% on the page. However, the recommendation is to print this copyright text.
 \makecopyrightpage
 
-
 %% ENGLISH ABSTRACT
-%% All the details (name, title, etc.) on the abstract page appear as specified
-%% above.
 \begin{abstractpage}[english]
     \abstracttext{}
 \end{abstractpage}
@@ -96,7 +84,6 @@ TO DO!
 
 %% SYMBOLS AND ABBREVIATIONS
 \mysection{Symbols and abbreviations}
-
 \subsection*{Symbols}
 
 \begin{tabular}{ll}
@@ -117,63 +104,23 @@ TO DO!
 \setlist[questions,2]{label=(\alph*),ref=\thequestionsi(\alph*)}
 
 %% INTRODUCTION
-\section{Introduction}
-\thispagestyle{empty}
-
-%% TEXT %%
-
-% OLD INTRO
-% In this bachelor's thesis the problem of distributed consensus and the different approaches to solving it are discussed. Distributed consensus in a distributed system means reaching a common agreement among the agents involved in said system. There are both classical and more modern approaches to solving this problems in both a synchronous state, as well as in a asynchronous state. 
-
-% The existing material and research in this field is vast, both through books and academic research. Some specific names stand out as for example Nancy Lynch and her book Distributed Algorithms \cite{distributed_algorithms}, as well as Leslie Lamport work on formalization of the Byzantine problem \cite{byzantine_generals}. There is also good material on modern approaches, such as population protocols done by for example James Aspnes \cite{simple_populaiton_protocol}.
-
-\begin{itemize}
-    \item broad introduction to the topic, talk about general research directions that have been investigated (be general here and cite works) -> 1 page
-    \item thesis objective: talk a bit more about the questions and the problems that you will address in the thesis + implication in the field -> 0,5 page
-    \item start explaining a bit more in details these topics (definitions, results, difficulties) -> 1 page
-    \item end of introduction: some consideration that you might have,  connections with other works, open questions (either existing or that you can come up with), etc -> 0,5 page
-\end{itemize}
-
-Distributed systems are a crucial part of the modern digital infrastructure that the world heavily relies on. They enable large, scalable and low-latency systems for a wide range of applications and audiences. Distributed systems can be large and complex with a large amount of agents working together. To enable achieve a shared goal amongst the agents, a consensus is required on desired input and output. Distributed consensus is a fundamental concept in distributed systems that describes to process of reaching consensus among multiple agents in a network. It is crucial for reaching and maintaining data consistency, ensuring fault tolerance and enabling cooperation between the agents in the system. 
-
-\clearpage
-
+\include{sections/introduction.tex}
 
 %% BACKGROUND
-\section{Background}
-%% TEXT %%
-
-%% END TEXT %%
-\clearpage
-
+\include{sections/background.tex}
 
 %% RESEARCH MATERIAL AND METHODS
-\section{Research material and methods}
-%% TEXT %%
-
-%% END TEXT %%
-\clearpage
-
+\include{sections/research.tex}
 
 %% RESULTS
-\section{Results}
-%% TEXT %%
-
-%% END TEXT %%
-\clearpage
+\include{sections/results.tex}
 
 %% SUMMARY
-\section{Summary} 
-%% TEXT %%
-
-%% END TEXT %%
-\clearpage
-
+\include{sections/summary.tex}
 
 %% REFERENCES
 \bibliographystyle{plain}
 \bibliography{ref}
-
 
 \clearpage
 
