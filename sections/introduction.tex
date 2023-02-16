@@ -3,37 +3,31 @@
 
 \subsection{Background}
 %% TEXT %%
-
+\linus{change all nodes to agents}
 %% Intro
-A distributed system is a collection of computers connected in a shared network who communicate and plan their actions by sending messages to each other \cite{Coulouris_systems_2005}. Distributed systems are a crucial part of the modern digital infrastructure that the world heavily relies on. They enable large, scalable and low-latency systems for a wide range of applications and audiences. Distributed systems can be vast and complex with a large amount of nodes working together. To achieve a shared goal amongst the nodes, a consensus is required on desired input and output. Distributed consensus is a fundamental concept in distributed systems that describes to process and the protocol for reaching consensus among multiple nodes in a network. Consensus here means having a shared understanding amongst the nodes of what to do. Consensus is crucial for reaching and maintaining data consistency, ensuring fault tolerance and enabling cooperation between the nodes in the system. 
+A distributed system is informally described as a collection of computing entities, also called agents, connected in a shared network which perform computations and exchange messages with each other in order to reach some global task \cite{Coulouris_systems_2005}. Distributed systems are a crucial part of the modern digital infrastructure that the world heavily relies on. They enable large, scalable and low-latency systems for a wide range of applications and audiences. \linus{Add example here}. To achieve a shared goal among the agents, they often need to reach a common agreement. \linus{expand here what agreement means} Distributed consensus is a fundamental problem in distributed computing that asks the distributed system to achieve an agreement respecting some properties. Consensus is crucial for reaching and maintaining data consistency, ensuring fault tolerance and enabling cooperation between the nodes in the system. \linus{citations and examples for the last sentence}
 
 %% Byzantine generals problem
-A common way of formalizing the problem of distributed consensus is through the Byzantine Generals Problem, introduced by Leslie Lamport. This formalization describes the problem through a case where a number of generals are trying to coordinate an attack on a city. Some of the generals may prefer to attack and some may prefer to retreat, and they have to reach a shared agreement on whether to attack or not. Additionally, there may be further complications due to treasonous generals spreading suboptimal information. There is also the complication brought by the fact that the only way for the generals to talk to each other is to send a messenger on foot, who might get captured or injured, to delivery message. 
+A common way of formalizing the problem of distributed consensus is through the Byzantine Generals Problem, introduced by Leslie Lamport in \cite{lamportByzantineGeneralsProblem}. In this definition there is a number of generals that are trying to coordinate an attack on a city. Some of the generals may prefer to attack and some may prefer to retreat, and they have to reach a shared agreement on whether to attack or not. Additionally, there may be further complications due to treasonous generals spreading suboptimal information. There is also the complication brought by the fact that the only way for the generals to talk to each other is to send a messenger on foot, who might get captured or injured while delivering message. 
 %% Byzantine fault
-The previously mentioned condition that describes the possibility of a part of the system failing (messenger getting injured or mischievous general in Byzantine terms) is refereed to as a Byzantine fault \cite{lamportByzantineGeneralsProblem}. In short, a Byzantine fault is any fault that makes different nodes in the system see different results \cite{driscollRealByzantineGenerals2004}.
-This formalization provides an easily understandable base with which you can visualize the different solutions.
+The previously mentioned condition that describes the possibility of a part of the system failing (messenger getting injured or mischievous general in Byzantine terms) is referred to as a Byzantine fault. In short, a Byzantine fault is any fault that makes different agents in the system see different results \cite{driscollRealByzantineGenerals2004}. \linus{improve}
+This formalization provides an easily understandable base with which one can visualize the different solutions.
 
 %% Syncrounous vs Asynchronous problem
-The way in which processes within a distributed system communicate with each other is another important aspect that should be taken into account when handling the distributed consensus problem. The distributed consensus problem may be modelled as a synchronous or asynchronous system. A synchronous system is a system where each process runs using a global clock or perfectly synchronized clocks, while there is no global clock nor consistent clock rate in a asynchronous system. Asynchronous systems introduce additional complexity and cannot achieve a completely fault tolerant state \cite{fischerImpossibilityDistributedConsensus}.
+The way in which agents within a distributed system communicate with each other is another important aspect that should be taken into account when handling the distributed consensus problem. The problem may be modelled in a synchronous or an asynchronous system. A synchronous system is a system where agents use a global clock (or they have perfectly synchronized local clocks), while in an asynchronous system, each agent has its own local clock. \linus{add that agents perform on clockrate} Asynchronous systems introduce additional complexity and cannot solve the distributed consensus problem in general \cite{fischerImpossibilityDistributedConsensus}.
 
 %% Existing solutions
-There are multiple established solutions to the distributed consensus problem, both in the synchronous and asynchronous environment. Examples of established solutions are Paxos \cite{lamportFastPaxos2006}, Raft \cite{ongaroSearchUnderstandableConsensus} and Practical Synchronous Byzantine Consensus \cite{renPracticalSynchronousByzantine} in the synchronous environment and pBFT \cite{castroPracticalByzantineFault} and population protocols \cite{aspnesIntroductionPopulationProtocols2009} in the asynchronous environment.
+There are multiple established algorithms solving the distributed consensus problem, both in the synchronous and asynchronous systems. Examples of established algorithms are Paxos \cite{lamportFastPaxos2006}, Raft \cite{ongaroSearchUnderstandableConsensus} and Practical Synchronous Byzantine Consensus \cite{renPracticalSynchronousByzantine} in the synchronous setting and pBFT \cite{castroPracticalByzantineFault} and population protocols \cite{aspnesIntroductionPopulationProtocols2009} in the asynchronous setting.
+
+\linus{add paragraph, introducing a more in depth description for the algos mention above. Informally descibe population protocols. What is paxos? in descriptive way -> running time and fault tolerance. Add reason for focusing on pp}
 
 \clearpage
 
+\linus{paper -> theis}
 \subsection{Thesis objective}
-The goal of this paper is to identify and clearly define what the problem of distributed consensus is,
-as well as discuss the existing approaches and solutions to the problem. After this this paper will look into the modern asynchronous population protocol algorithms that have been the subject of many papers in the recent years. 
-This paper will give a overview of the current knowledge of distributed consensus algorithms, as well as a brief overlook on where and how these might be applied in practice.
+The goal of this paper is to clearly define what the problem of distributed consensus is, as well as discuss the existing approaches and algorithms to the problem. Afterwards, we will dig into the modern asynchronous population protocol algorithms that have widely investigated in recent years. 
 
-This paper is a literature study that is divided into three parts. The first two parts will describe what the distributed consensus problem is and what type of solutions there exists to this problem. After this, the third part will describe why the modern population protocol solutions have been developed, as well as give an overview of the recent research done in this field. In this paper the following research questions will be used as support:
+This paper is divided into three parts. The first two parts will define what the distributed consensus problem is and what type of algorithms there exists to this problem. The third part will describe what the modern population protocol algorithms are, as well as give an overview of the recent research done in this field.
 
-\begin{itemize}
-    \item Clearly define what the distributed consensus problem is
-    \item To provide an overview of the current state of the art in distributed consensus algorithms and their applications in various domains.
-    \item Distinguish the differences between the modern and classical approaches
-    \item Deep dive into modern population protocol algorithms
-\end{itemize}
-
-There are many literature surveys on specific subdomains of the distributed consensus problem, however not many providing a general overview of the complete topic. This paper will provide that complete snapshot of the current state of the art with a focus on the most recent research in population protocols. 
+There are many literature surveys on specific subdomains of the distributed consensus problem, however not many providing a general overview of the complete topic. As the literature on this topic is large, we will cover some important parts of it with a strong focus on population protocols.
 \clearpage
