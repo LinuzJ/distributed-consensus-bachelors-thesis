@@ -8,6 +8,10 @@
 %% Math fonts, symbols, and formatting
 \usepackage{amsfonts,amssymb,amsbsy,amsmath, enumitem}
 \usepackage{xcolor}
+\usepackage{thmtools}
+\declaretheorem{Definition}
+\declaretheorem{Lemma}
+\declaretheorem{Theorem}
 
 %% THESIS INFO
 \degreeprogram{Computer Science}
@@ -62,6 +66,7 @@
 %% Typeset the copyright text.
 \makecopyrightpage
 
+\supervisor{University Lecturer  \ Henrik Wallén}
 %% ENGLISH ABSTRACT
 \begin{abstractpage}[english]
     \abstracttext{}
@@ -84,30 +89,22 @@ TODO
 %% TABLE OF CONTENTS
 \thesistableofcontents
 
-%% SYMBOLS AND ABBREVATIONS
-\include{sections/preliminaries.tex}
-
 \cleardoublepage
-
-%% List of research questions
-\newlist{questions}{enumerate}{2}
-\setlist[questions,1]{label=RQ\arabic*.,ref=RQ\arabic*}
-\setlist[questions,2]{label=(\alph*),ref=\thequestionsi(\alph*)}
 
 %% INTRODUCTION
 \include{sections/introduction.tex}
 
+%% SYMBOLS AND ABBREVATIONS
+\include{sections/preliminaries.tex}
+
 %% Classic results
-\include{sections/background.tex}
+\include{sections/consensus_problem.tex}
 
 %% Population protocols
-\include{sections/research.tex}
+\include{sections/population_protocols.tex}
 
 %% Conclusion
-\include{sections/results.tex}
-
-%% SUMMARY
-\include{sections/summary.tex}
+\include{sections/conclusion.tex}
 
 %% REFERENCES
 \bibliographystyle{plain}
