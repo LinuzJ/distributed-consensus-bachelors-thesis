@@ -7,7 +7,7 @@
 
  \begin{Definition}
  \inlineMath{f(n) = O(g(n))} describes an equation where there exists positive constants 
- \inlineMath{c} and \inlineMath{k}, such that \inlineMath{0 \leq f(n) \leq c*g(n) \: \forall \: n \geq k}
+ \inlineMath{c} and \inlineMath{k}, such that \inlineMath{0 \leq f(n) \leq cg(n) \: \forall \: n \geq k}
  \end{Definition}
  
 \subsection{Distributed system}
@@ -22,17 +22,21 @@ Thus, a distributed system can be defined as the tuple \inlineMath{(N, E, S, F)}
 
 \subsection{Consensus problem}
 
+The consensus problem is the problem of trying to get all computing entities, called agents, in a system, to agree on a binary value. This system of agent may include faulty agents, that may fail or produce faulty messages. The challenge is to make all non-faulty agents to have a shared understanding of the binary value in question, even with the presence of faulty agents. 
 
+Majority consensus
+
+Fault tolerance
 
 \subsection{Asynchronous and synchronous systems}
 
+Explain async and sync envs. Impossibility result in both envs
+
 \subsection{Population protocols}
+
+
 
 \subsection{Opinion dynamics}
 
-\begin{itemize}
-    \item notations
-    \item definitions
-\end{itemize}
 
 \linus{formal definitions of key concepts and notations. e.g. DS, DC problem, population protocols. Check Lynch survey}
