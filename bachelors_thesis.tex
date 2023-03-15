@@ -8,10 +8,22 @@
 %% Math fonts, symbols, and formatting
 \usepackage{amsfonts,amssymb,amsbsy,amsmath, enumitem}
 \usepackage{xcolor}
-\usepackage{thmtools}
-\declaretheorem{Definition}
-\declaretheorem{Lemma}
-\declaretheorem{Theorem}
+\usepackage{amsthm}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{result}[theorem]{Result}
+%Definition environments:
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+%Remark environments:
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}%\declaretheorem{Definition}
+%\declaretheorem{Lemma}
+%\declaretheorem{Theorem}
 
 %% THESIS INFO
 \degreeprogram{Computer Science}
