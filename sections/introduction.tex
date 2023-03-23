@@ -18,9 +18,14 @@ The way in which agents within a distributed system communicate with each other 
 %% Existing solutions
 There are multiple established algorithms solving the distributed consensus problem, both in the synchronous and asynchronous systems. Examples of established algorithms are Paxos \cite{lamportFastPaxos2006}, Raft \cite{ongaroSearchUnderstandableConsensus} and Practical Synchronous Byzantine Consensus \cite{renPracticalSynchronousByzantine} in the synchronous setting and pBFT \cite{castroPracticalByzantineFault} and population protocols \cite{aspnesIntroductionPopulationProtocols2009} in the asynchronous setting.
 
+%% Brief paxos
 The paxos algorithm mentioned above is one of the first algorithms introduced to solve the consensus problem, even with the presence of failures. It was introduced by Leslie Lamport  in \cite{lamportPartTimeParliment1998}. At a high level, the Paxos algorithm is divided into two phases. In the first phase, a proposer agent sends out it's initial value to the other agents, who respond with an acceptation or an rejection. In the second phase, the proposer agent sends out another proposal, including the responses from the first phase, and repeats this process until the majority if the agents in the system have accepted a common value. 
 
-\linus{add paragraph, introducing a more in depth description for the algos mention above. What is paxos? in descriptive way -> running time and fault tolerance. Informally descibe population protocols. Add reason for focusing on pp}
+%% Brief Population protocol
+More modern consensus algorithms in the asynchronous setting are population protocols. Population protocols are theoretical models used for modelling collections of moving agents that are capable of interacting and performing computation. The purpose of population protocols are for the collection of agents to converge towards a correct output value. The initial input values for the agents are distributed to the agents in the system after which pairs of agents that are close to each other can exchange information. The agents move around in an unpredictable manner, however subject to some fairness constraints and computation, the collection of agents will converge to the correct output state. \cite{aspnesIntroductionPopulationProtocols2009} 
+
+%% Bried reasoning for focusing on PPs
+Population protocols are a modern model in distributed computing that were introduced by Dana Angluin in \cite{angluinComputationNetworksPassively2006}. The application of population protocols vary from sensor networks to the interactions of molecules in theoretical chemistry. \cite{aspnesIntroductionPopulationProtocols2009} The wide application possibilities and the amount of recent breakthroughs made in the field (e.g. \cite{dotyTimeSpaceOptimal2022}, \cite{bankhamerPopulationProtocolsExact2022}) makes it highly interesting and is the reason this thesis will, in addition to giving a overview of the consensus problem, focus on population protocols.
 
 \clearpage
 
