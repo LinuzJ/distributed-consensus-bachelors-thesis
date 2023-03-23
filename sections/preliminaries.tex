@@ -24,13 +24,24 @@ Define a distributed system as a tuple \inlineMath{(V, E, S, F)}, where \inlineM
 
 The consensus problem asks to design a protocol that requires all computing entities, called agents, in a system, to agree on a binary value. This system of agent may include faulty agents, that may fail or produce faulty messages. The challenge is to make all non-faulty agents to have a shared understanding of the binary value in question, even with the presence of faulty agents. 
 
-In order to reach consensus, each node in the set \inlineMath{V}, which is the set of nodes in the system begins by \emph{proposing} the value in it's \emph{input register} \inlineMath{x_p}. Let the value proposed be \inlineMath{v_i}. The nodes then communicate and sharing their initial proposals. The nodes then decide on a decision value and sets it in their respective \emph{output registers} \inlineMath{y_p}. The nodes are now in a \emph{decided state}, from which they can no longer return nor change the value of \inlineMath{y_p}. The requirements of a consensus algorithm are that, for each execution of it, these conditions should hold:
+In order to reach consensus, each node in the set \inlineMath{V}, which is the set of nodes in the system, begins by \emph{proposing} the value in it's \emph{input register} \inlineMath{x_p}. Let the value proposed be \inlineMath{v_i}. The nodes then communicate and share their initial proposals. The nodes then decide on a decision value \inlineMath{d_i} and sets it in their respective \emph{output registers} \inlineMath{y_p}. The nodes are now in the \emph{decided state}, from which they can no longer return nor change the value of \inlineMath{y_p}. The requirements of a consensus algorithm are that, for each execution of it, these conditions should hold:
 
 \begin{itemize}[label={}]
   \item \emph{Termination:} All correct nodes eventually sets the value of their output register and reach a decided state.
   \item \emph{Agreement:} All correct nodes share the same value in their output registers: if \inlineMath{V_i} and \inlineMath{V_j} are correct nodes and are in the \emph{decided state}, their corresponding states \inlineMath{S_i} and \inlineMath{S_j} share the same \emph{output register} values \inlineMath{y_i = y_j}.
   \item \emph{Integrity:} If all correct nodes proposed the same value, then any correct node that is in the \emph{decided state} has chosen that value.
 \end{itemize}
+
+
+%% Insert explanation on the graph below
+In Figure \ref{fig:ConsensusProblem} we can see an example of the explanation above. Two nodes propose \emph{proceed} and the third node proposes \emph{abort}, but crashes thereafter. The two correct nodes that remain decide on \emph{proceed}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figures/consensus_problem.png}
+    \caption{TODO caption}
+    \label{fig:ConsensusProblem}
+\end{figure}
+
 
 Fault tolerance
 
