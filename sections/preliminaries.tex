@@ -43,16 +43,16 @@ In Figure \ref{fig:ConsensusProblem} we can see an example of the explanation ab
 \begin{figure}[H]
     \centering
     \includesvg[width = 0.7\textwidth]{figures/consensus_problem.svg}
-    \caption{TODO caption}
+    \caption{Consensus for three processes}
     \label{fig:ConsensusProblem}
 \end{figure}
 
 
-Fault tolerance
+\linus{Elaborate figure \ref{fig:ConsensusProblem}}
 
 \subsection{Asynchronous and synchronous systems}
 
-Explain async and sync envs. Impossibility result in both envs
+\linus{TODO: Explain async and sync envs. Impossibility result in both envs}
 
 \subsection{Population protocols}
  A population protocol is a theoretical model used for modelling collections of agents capable of moving, interacting and computation. The goal of the protocol is for the collection of agents to converge towards a correct output value. In the basic population protocol model, an input value is distributed to the the collection of agents. Agents have pairwise interaction in the order set by a scheduler, subject to some fairness guarantee. Each agent in the collection is a type of finite state machine and the protocol for the system describes how the the interaction between two agents change their respective states. No failures occur for the agents in the system. The output values of the agents change over time and eventually, they must converge to the correct output value for the set of input values initially distributed to the agents \cite{aspnesIntroductionPopulationProtocols2009}. 
@@ -69,10 +69,11 @@ Explain async and sync envs. Impossibility result in both envs
 
 A computation following a protocol defined as above, proceeds as follows. Let the system have \inlineMath{n} \emph{agents}, where \inlineMath{n \geq 2}. And let the computation take place in the system mentioned previously. The input value for each agent in the system is a value from $\Sigma$. The initial state is determined by using $\zeta$ on all agents input values. Let the \emph{configuration} of the system be a vector \inlineMath{C} that contains all the states of the agents. 
 
-A protocol is made up of many executions. An execution alters the \emph{configuration} of the system through pairwise interaction between agents. The agents with states \inlineMath{q_1} and \inlineMath{q_2} can change into the states \inlineMath{q_1'} and \inlineMath{q_2'} if the interaction \inlineMath{(q_1, q_2, q_1', q_2')} is in the transition relation $\delta$. This interaction could also be described using the notation $(q_1, q_2) \mapsto (q_1', q_2')$. Interactions are usually asymmetric, meaning one agent acts as the \emph{initiator} and the other acts as the \emph{responder}. In this example \inlineMath{q_1} would be the initiator and \inlineMath{q_2} would be the responder. If \inlineMath{C} and \inlineMath{C'} are \emph{configurations} in the system, \inlineMath{C \rightarrow C'} means that \inlineMath{C'} can be reached from \inlineMath{C} through a single interaction. The previously mentioned \emph{execution} of the protocol is an inifinite sequence of configurations \inlineMath{C_0, C_1, C_2, ...} where \inlineMath{C_0} is the initial configuration and $C_i \rightarrow C_{i+1} \forall i \geq 0$. 
+A protocol is made up of many executions. An execution alters the \emph{configuration} of the system through pairwise interaction between agents. The agents with states \inlineMath{q_1} and \inlineMath{q_2} can change into the states \inlineMath{q_1'} and \inlineMath{q_2'} if the interaction \inlineMath{(q_1, q_2, q_1', q_2')} is in the transition relation $\delta$. This interaction could also be described using the notation $(q_1, q_2) \mapsto (q_1', q_2')$. Interactions are usually asymmetric, meaning one agent acts as the \emph{initiator} and the other acts as the \emph{responder}. In this example \inlineMath{q_1} would be the initiator and \inlineMath{q_2} would be the responder. If \inlineMath{C} and \inlineMath{C'} are \emph{configurations} in the system, \inlineMath{C \rightarrow C'} means that \inlineMath{C'} can be reached from \inlineMath{C} through a single interaction. The previously mentioned \emph{execution} of the protocol is an infinite sequence of configurations \inlineMath{C_0, C_1, C_2, ...} where \inlineMath{C_0} is the initial configuration and $C_i \rightarrow C_{i+1} \forall i \geq 0$. 
+\\\\
+The pairwise interactions between agents occur in an unpredictable order. The sequence of interactions can be thought of as an adversary, under whose decisions the protocol must work correctly. However, in order for significant computations to take place, some restrictions must be places on the adversary scheduler of the system. Otherwise, the adversary scheduler could divide agents into two isolated groups and only schedule pairwise interactions with agents isolated in their own groups.  
+
+\linus{TODO: Explain fairness condition}
 
 
 \subsection{Opinion dynamics}
-
-
-% \linus{formal definitions of key concepts and notations. e.g. DS, DC problem, population protocols. Check Lynch survey}
