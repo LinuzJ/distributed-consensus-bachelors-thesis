@@ -1,7 +1,8 @@
 %% SYMBOLS AND ABBREVIATIONS
 \section{Preliminaries}
 
-
+%%------------------------------------------------------------------------------------
+%% BIG O
 \subsection{Big O notation}
 
  The Big O is a notation describing the execution time of an algorithm, either through memory or time usage. It is the asymptotic upper bound of a function that describes the algorithm. In computer science the Big O notation is used to analyze the time and space complexity of algorithms. and The Big O notation is a function of \inlineMath{n}, where \inlineMath{n} is the number of items handled in the algorithm. Described informally using the equation \inlineMath{f(n) = O(g(n))}, \inlineMath{f(n)} is smaller than some constant multiplied with \inlineMath{g(n)}.
@@ -20,6 +21,8 @@ Each individual node, or process, in the set of nodes \inlineMath{V} has an inte
 
 Define a distributed system as a tuple \inlineMath{(V, E, S, F)}, where \inlineMath{V} is the set of vertices (or nodes), \inlineMath{E} is the set of communication links between nodes, \inlineMath{S} is the current state of the system and \inlineMath{F} is the set of functions that define the behaviour of the system.
 
+%%------------------------------------------------------------------------------------
+%% CONSENSUS PROBLEM
 \subsection{Consensus problem}
 
 The consensus problem asks to design a protocol that requires all computing entities, called agents, in a system, to agree on a binary value. This system of agent may include faulty agents, that may fail or produce faulty messages. The challenge is to make all non-faulty agents to have a shared understanding of the binary value in question, even with the presence of faulty agents. 
@@ -50,10 +53,28 @@ In Figure \ref{fig:ConsensusProblem} we can see an example of the explanation ab
 
 \linus{Elaborate figure \ref{fig:ConsensusProblem}}
 
+%%------------------------------------------------------------------------------------
+%% MAJORITY CONSENSUS
+\subsection{Majority Consensus}
+
+In the classical consensus problem, consensus is reached when all correct nodes eventually reaches a decided, or finished state. This value may be whatever, as long as all of the correct nodes share the same value in their decided state. However, \emph{majority} consensus requires the algorithm to agree on the initially most frequent value.
+
+\begin{definition}
+In a system with \inlineMath{n} agents and \inlineMath{k} states. Majority consensus is reached when the agents have agreed on the most frequently occurring initial state. 
+\end{definition}
+ 
+ \emph{Exact} majority consensus is a requirement that the agreement must me made correctly even though the initially most frequent and second most frequent only differ in size by 1. In literature, the terms \emph{majority} and \emph{plurality} are often used interchangeably. \emph{Majority} will be used in this thesis for consistency.
+
+
+%%------------------------------------------------------------------------------------
+%% ASYNC AND SYNC SYSTEMS
 \subsection{Asynchronous and synchronous systems}
 
 \linus{TODO: Explain async and sync envs. Impossibility result in both envs}
 
+
+%%------------------------------------------------------------------------------------
+%% POPULATION PROTOCOLS
 \subsection{Population protocols}
  A population protocol is a theoretical model used for modelling collections of agents capable of moving, interacting and computation. The goal of the protocol is for the collection of agents to converge towards a correct output value. In the basic population protocol model, an input value is distributed to the the collection of agents. Agents have pairwise interaction in the order set by a scheduler, subject to some fairness guarantee. Each agent in the collection is a type of finite state machine and the protocol for the system describes how the the interaction between two agents change their respective states. No failures occur for the agents in the system. The output values of the agents change over time and eventually, they must converge to the correct output value for the set of input values initially distributed to the agents \cite{aspnesIntroductionPopulationProtocols2009}. 
 
@@ -72,8 +93,13 @@ A computation following a protocol defined as above, proceeds as follows. Let th
 A protocol is made up of many executions. An execution alters the \emph{configuration} of the system through pairwise interaction between agents. The agents with states \inlineMath{q_1} and \inlineMath{q_2} can change into the states \inlineMath{q_1'} and \inlineMath{q_2'} if the interaction \inlineMath{(q_1, q_2, q_1', q_2')} is in the transition relation $\delta$. This interaction could also be described using the notation $(q_1, q_2) \mapsto (q_1', q_2')$. Interactions are usually asymmetric, meaning one agent acts as the \emph{initiator} and the other acts as the \emph{responder}. In this example \inlineMath{q_1} would be the initiator and \inlineMath{q_2} would be the responder. If \inlineMath{C} and \inlineMath{C'} are \emph{configurations} in the system, \inlineMath{C \rightarrow C'} means that \inlineMath{C'} can be reached from \inlineMath{C} through a single interaction. The previously mentioned \emph{execution} of the protocol is an infinite sequence of configurations \inlineMath{C_0, C_1, C_2, ...} where \inlineMath{C_0} is the initial configuration and $C_i \rightarrow C_{i+1} \forall i \geq 0$. 
 \\\\
 The pairwise interactions between agents occur in an unpredictable order. The sequence of interactions can be thought of as an adversary, under whose decisions the protocol must work correctly. However, in order for significant computations to take place, some restrictions must be places on the adversary scheduler of the system. Otherwise, the adversary scheduler could divide agents into two isolated groups and only schedule pairwise interactions with agents isolated in their own groups.  
+\\\\
+As stated previously, the systems scheduler is subject to some \emph{fairness} condition. This fairness condition ensures that the scheduler cannot avoid a certain step indefinitely. Expressed more formally: Let \inlineMath{C} be a configuration that exists an infinite amount of times in an execution. If \inlineMath{C \mapsto C'}, then the configuration \inlineMath{C'} also must exist an infinite amount of times in the execution. This can be summarised as the requirement: all potential configurations that can be reached, will eventually be reached.
+\\\\ 
+The correctness of a population protocol can also be compared to the execution of the algorithm. During the execution of a population protocol, if the state of any given agent at any given time is \inlineMath{q}, then its output value will be \inlineMath{w(q)}. This means that the output of an agent may change during an execution. According to the fairness constraint explained previously, the scheduler of the protocol may schedule arbitrary interactions only up to a certain point. Correctness can also be phrased in a similar way: all agents must eventually produce the correct output, and continue doing so after that point in time.
 
-\linus{TODO: Explain fairness condition}
 
 
-\subsection{Opinion dynamics}
+
+\linus{TODO: Finish population protocol prelim}
+
