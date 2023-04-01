@@ -9,6 +9,14 @@ The consensus problem is fundamental challenge in the field of distributed compu
 \subsection{Simple Population Protocol}
 \linus{TODO: Go through results of Angluin Simple Population Protocol \cite{angluinSimplePopulationProtocol2008}}
 
+
+\subsubsection{Introduction}
+
+One of the first simple population protocols for majority consensus was presented for a simple 3-state system by Angluin in \cite{angluinSimplePopulationProtocol2008}. The protocol presented is shown to converge to a consensus in \inlineMath{O(n log n)} interactions with high probability. It is also shown that the output value is correct, meaning it matches the initial majority, with high probability if the initial net majority is \inlineMath{w(\sqrt{n} log n)}.
+
+The protocol is a simple 3-state protocol, meaning \inlineMath{Q = \{x, y, b\}}. The purpose of the protocol is to make all agents decide on the initial majority state, either \inlineMath{x} and \inlineMath{y}. The extra state \inlineMath{b} is a an "blank state". The idea of the protocol is that when two agents with different states meet in an interaction, the \emph{receiver} abandons its state and enters the blank state \inlineMath{b}. If an agent with the blank state \inlineMath{b} interacts with another agent, it adopts the other agents state, assuming the other agent does not also have the blank state \inlineMath{b}. Because the collisions between agents are chosen by an adversary, the interactions between agents with the opposite state are equally balanced. However, because an agent with the blank state is more likely to interact with an agent with the initial majority state, the initial majority will increase until all agents have the same state. Once all agents have converged to the same state, the protocol is finished and the system has reached consensus. 
+
+Furthermore, 
 \subsection{Generalization}
 \linus{Go through the results of the recent study \cite{AspnesFastConverganceOfKOpinion2023} that generalizes the results of \cite{angluinSimplePopulationProtocol2008} }
 

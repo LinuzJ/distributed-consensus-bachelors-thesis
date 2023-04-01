@@ -35,10 +35,11 @@ In order to reach consensus, each node in the set \inlineMath{V}, which is the s
   \item \emph{Integrity:} If all correct nodes proposed the same value, then any correct node that is in the \emph{decided state} has chosen that value.
 \end{itemize}
 
-% TODO
-
-% First define it in a classic setting,
+\linus{% First define it in a classic setting,
 % then define with randomized properties
+
+% impossibility result
+}
 
 
 %% Insert explanation on the graph below
@@ -70,7 +71,7 @@ In a system with \inlineMath{n} agents and \inlineMath{k} states. Majority conse
 %% ASYNC AND SYNC SYSTEMS
 \subsection{Asynchronous and synchronous systems}
 
-\linus{TODO: Explain async and sync envs. Impossibility result in both envs}
+When modelling a theoretical system, one can either choose to model it as a synchronous system or as a asynchronous system. In a synchronous system, all agents essentially use the same clock. The algorithms used in a synchronous system assume that steps take place in discrete rounds. A agent can be assumed to be faulty if no message has been received from it at the end of the round. In a asynchronous system on the other hand, agents can send messages at arbitrary times, meaning that if an agent fails, it is indistinguishable from an agent responding slowly.
 
 
 %%------------------------------------------------------------------------------------
@@ -81,10 +82,10 @@ In a system with \inlineMath{n} agents and \inlineMath{k} states. Majority conse
  A protocol is formally defined by
  \begin{itemize}
      \item \inlineMath{Q}, a finite set of possible states for an agent,
-     \item $\Sigma$, a finite input alphabeth,
+     \item $\Sigma$, a finite input alphabet,
      \item $\zeta$, an input map $\Sigma \mapsto Q$, where $\zeta(\sigma)$ represents the initial state of an agent and the input to that agent is $\sigma$,
      \item $\omega$, an output map $Q \mapsto Y$, where $Y$ is the output range and $\omega(q)$ represents the output value of an agent in state $q$,
-     \item $\delta \subseteq Q^4$, a transition relation that describes interactions between agents.
+     \item $\delta \subseteq Q \times Q \mapsto Q \times Q$, a transition relation that describes interactions between agents.
      
  \end{itemize}
 
