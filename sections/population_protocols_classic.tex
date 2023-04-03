@@ -1,4 +1,4 @@
-\section{Consensus Problem}
+\section{Population Protocols}
 %% TEXT %%
 \subsection{Background}
 \linus{TODO: Explain background to consensus problem and its relation to population protocols}
@@ -6,19 +6,19 @@
 The consensus problem is fundamental challenge in the field of distributed computing. The problem has been studied extensively in literature and there are multiple popular algorithms 
 
 
-\subsection{3-state approximate majority protocol}
+\subsection{3-state approximate majority protocol} \label{3stateApproximatemajority}
 
-\subsubsection{Introduction}
+\subsubsection{Introduction} \label{angluinIntroduction}
 
 A classic population protocol for approximate majority consensus was presented for a simple 3-state system by Angluin in \cite{angluinSimplePopulationProtocol2008}. The protocol presented is shown to converge to a consensus in \inlineMath{O(n \log n)} interactions with high probability. It is also shown that the output value is correct, meaning it matches the initial majority, with high probability if the initial net majority is \inlineMath{w(\sqrt{n} \log n)}.
 
-The protocol is a simple 3-state protocol, meaning \inlineMath{Q = \{x, y, b\}}. The purpose of the protocol is to make all agents decide on the initial majority state, either \inlineMath{x} and \inlineMath{y}. The extra state \inlineMath{b} is a an "blank state". The idea of the protocol is that when two agents with different states meet in an interaction, the \emph{responder} abandons its state and enters the blank state \inlineMath{b}. If an agent with the blank state \inlineMath{b} interacts with another agent, it adopts the other agents state, assuming the other agent does not also have the blank state \inlineMath{b}. Because the collisions between agents are chosen by an adversary, the interactions between agents with the opposite state are equally balanced. However, because an agent with the blank state is more likely to interact with an agent with the initial majority state, the initial majority will increase until all agents have the same state. Once all agents have converged to the same state, the protocol is finished and the system has reached consensus. 
+The protocol is a simple 3-state protocol, meaning \inlineMath{Q = \{x, y, b\}}. The purpose of the protocol is to make all agents decide on the initial majority state, either \inlineMath{x} and \inlineMath{y}. The extra state \inlineMath{b} is a an \emph{blank} state. The idea of the protocol is that when two agents with different states meet in an interaction, the \emph{responder} abandons its state and enters the blank state \inlineMath{b}. If an agent with the blank state \inlineMath{b} interacts with another agent, it adopts the other agents state, assuming the other agent does not also have the blank state \inlineMath{b}. Because the collisions between agents are chosen by an adversary, the interactions between agents with the opposite state are equally balanced. However, because an agent with the blank state is more likely to interact with an agent with the initial majority state, the initial majority will increase until all agents have the same state. Once all agents have converged to the same state, the protocol is finished and the system has reached consensus. 
 
 Furthermore, Angluin shows that with high probability that the inclusion of \inlineMath{o(\sqrt{n})} Byzantine agents cannot notably delay the protocol converging to a state where the majority of non-Byzantine agents have the correct state. Byzantine agents are agents capable of appearing as any state, regardless of their previous interaction and initial state. The inclusion of these Byzantine agents can, however, keep a small part of of the non-Byzantine agents confused. Additionally, after exponential time on average, the Byzantine agents can eventually push the system to a stable incorrect state, where all of the non-Byzantine agents are blank. In the case that \inlineMath{z} Byzantine agents are included amongst the population \inlineMath{n} of normal agents, any execution select a pair at random from the combined population of \inlineMath{n} and \inlineMath{z}.
 
-\subsubsection{Behaviour}
+\subsubsection{Notations}
 
-The behaviour and bounds of the protocol will now be discussed further. Like previously mentioned, the agents in the system can have the states in \inlineMath{Q = \{x, y, b\}}, where \inlineMath{b} is the \emph{blank} state. We can map out all possible interactions between agents of different states in \inlineMath{Q} in the following table
+Like previously mentioned, the agents in the system can have the states in \inlineMath{Q = \{x, y, b\}}, where \inlineMath{b} is the \emph{blank} state. We can map out all possible interactions between agents of different states in \inlineMath{Q} in the following table
 
 \begin{figure}[H]
     \centering
@@ -39,8 +39,31 @@ The behaviour and bounds of the protocol will now be discussed further. Like pre
 
 All interactions modify the \emph{responders} state. This makes the protocol \emph{one-way}. Notable is also that not all interactions changes the states. For example \inlineMath{xx} does not change any state. The interactions that do change states are \inlineMath{xy, yx, yb, xb}.The system can be in three stable configurations \inlineMath{C}: all \inlineMath{b}'s, all \inlineMath{x}'s or all \inlineMath{y}'s. The first one of the previously named configurations cannot be reached from any configuration containing anything else than \inlineMath{b}'s. The two latter configurations are also stable and from every configuration made up of not only \inlineMath{b}'s, one of them can be reached.
 
+Let \inlineMath{x_t, y_t and b_t} be the number of \inlineMath{x, y} and \inlineMath{b} after \inlineMath{t} interactions. Let the \emph{convergence time} $\tau_*$ of the protocol be the first time \inlineMath{t} at which \inlineMath{x_t = n} or \inlineMath{y_t = n}.
+
+To reduce size of explanations, we also define:
+\begin{description}
+    \centering
+    \item[] \inlineMath{u = x - y}
+    \item[] \inlineMath{v = x + y = n - b}
+    \item[] \inlineMath{g = 1/n(n - 1)}
+\end{description}
+
+
+\subsubsection{Results}
+
+The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2008} were briefly described in \ref{angluinIntroduction}. The main result presented is the following theorem. 
+
+ \begin{theorem}
+    \emph{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c = 0} and sufficiently large \inlineMath{},}
+    \\
+    \centerline{$Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}
+ \end{theorem}
+
 \subsection{Generalization}
 \linus{Go through the results of the recent study \cite{AspnesFastConverganceOfKOpinion2023} that generalizes the results of \cite{angluinSimplePopulationProtocol2008} }
 
+The protocol presented by Angluin (\cite{angluinSimplePopulationProtocol2008}) in section \ref{3stateApproximatemajority} presents a protocol capable of 
+reaching consensus with a high probability in \inlineMath{O(n \log n)} interactions. 
 %% END TEXT %%
 \clearpage
