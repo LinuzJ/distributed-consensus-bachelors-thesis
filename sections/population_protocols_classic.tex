@@ -7,7 +7,8 @@ The consensus problem is fundamental challenge in the field of distributed compu
 
 
 \subsection{3-state approximate majority protocol} \label{3stateApproximatemajority}
-
+%% ---------------------------------------------------
+%% INTRODUCTION
 \subsubsection{Introduction} \label{angluinIntroduction}
 
 A classic population protocol for approximate majority consensus was presented for a simple 3-state system by Angluin in \cite{angluinSimplePopulationProtocol2008}. The protocol presented is shown to converge to a consensus in \inlineMath{O(n \log n)} interactions with high probability. It is also shown that the output value is correct, meaning it matches the initial majority, with high probability if the initial net majority is \inlineMath{w(\sqrt{n} \log n)}.
@@ -49,21 +50,61 @@ To reduce size of explanations, we also define:
     \item[] \inlineMath{g = 1/n(n - 1)}
 \end{description}
 
+This definition of $u$ and $v$ exposes the symmetry between $x$ and $y$. The variable $g$ gives us the opportunity to calculate the probability of an interaction happening. For example $gvb$ gives the probability of a non-blank agent interacting with a blank agent. To define interactions and sums of interactions, indicator variables are used. For example, let $I^{vb}_t$ be any interaction between a $xy$ or $yx$ pair at time $t$. All indicator variables $I_t$ have a corresponding sum variable $S_t = \sum^t_{i=1}I_i$ that describes the total amount of times this indicator event has occurred up until time $t$. The following indicator variables will be used:
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c c c|}
+     \hline
+     Indicator & Sum & Event \\ 
+     \hline
+     \inlineMath{I^{vb}} & \inlineMath{S^{vb}} & $xb$ or $yb$ interaction \\
+     \hline
+     \inlineMath{I^{xy}} & \inlineMath{S^{xy}} & $xy$ or $yx$ interaction \\
+     \hline
+     \inlineMath{I^{b}} & \inlineMath{S^{b}} & Interaction in $b$ corner with $b \geq (7/8)n$ \\
+     \hline
+     \inlineMath{I^{x}} & \inlineMath{S^{x}} & Interaction in $x$ corner with $x \geq (7/8)n$  \\
+     \hline
+     \inlineMath{I^{y}} & \inlineMath{S^{y}} & Interaction in $y$ corner with $y \geq (7/8)n$  \\
+     \hline
+     \inlineMath{I^{c}} & \inlineMath{S^{c}} & Central interaction: $I^b = I^x = I^y = 0$ \\
+     \hline
+     \inlineMath{I^{z}} & \inlineMath{S^{z}} & Interaction with a Byzantine agent \\
+     \hline
+    \end{tabular}
+    \caption{Interaction and sum notations}
+    \label{fig:QInteractions}
+\end{table}
+
+%% ---------------------------------------------------
+%% RESULTS FROM SIMPLE PROPROT
 \subsubsection{Results}
 
-The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2008} were briefly described in \ref{angluinIntroduction}. The main result presented is the following theorem. 
+The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2008} were briefly described in \ref{angluinIntroduction}. By the proofs presented in \cite{angluinSimplePopulationProtocol2008}, a high-probability bound of the total interactions done before reaching convergence is presented in the following theorem.
 
  \begin{theorem}
     \emph{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c = 0} and sufficiently large \inlineMath{},}
-    \\
-    \centerline{$Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}
+    \begin{align}
+        \centerline{$Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}    
+    \end{align}
  \end{theorem}
 
-\subsection{Generalization}
-\linus{Go through the results of the recent study \cite{AspnesFastConverganceOfKOpinion2023} that generalizes the results of \cite{angluinSimplePopulationProtocol2008} }
+The parameter $c$ is a fixed positive error parameter $c > 0$. The convergence time $\tau$ will be the sum of all indicator variable sums at the time of $\tau$, $\tau = S^c_\tau + S^b_\tau + S^x_\tau + S^y_\tau$. This is
 
+%% ---------------------------------------------------
+%% RESULTS FROM GENERALIZATION PAPER
+\subsection{Generalization}
+
+ \subsubsection{Introduction}
 The protocol presented by Angluin (\cite{angluinSimplePopulationProtocol2008}) in section \ref{3stateApproximatemajority} presents a protocol capable of 
 reaching consensus with a high probability in \inlineMath{O(n \log n)} interactions. 
+
+\subsubsection{Notations}
+Paper specific notations and preliminaries
+
+\subsubsection{Results}
+Present results of \cite{AspnesFastConverganceOfKOpinion2023}
+
 %% END TEXT %%
 \clearpage
