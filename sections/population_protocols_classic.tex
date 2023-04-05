@@ -96,7 +96,7 @@ The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2
  \begin{theorem}\thlabel{theorem1}
     \emph{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c > 0} and sufficiently large $n$,}
     \begin{align}
-        \centerline{$Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}  \label{angluinTheorem1} 
+        \centerline{$\Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}  \label{angluinTheorem1} 
     \end{align}
  \end{theorem}
 
@@ -113,8 +113,15 @@ The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2
     \textit{Let $\epsilon > 0$. If the difference between the initial majority and initial minority populations is $\Omega(n^{3/4+\epsilon})$ and there is exactly one active agent, then with high probability, the epidemic-triggered approximate majority protocol converges to the initial value.}
  \end{theorem} 
 
- The inclusion of Byzantine agents in the system is also studied in \cite{angluinSimplePopulationProtocol2008}. A new group of agents $z$ is introduced into the system, where $z = o(\sqrt{n})$. Angluin shows that 
-
+ The inclusion of Byzantine agents in the system is also studied in \cite{angluinSimplePopulationProtocol2008}. A new group of agents $z$ is introduced into the system, where $z = o(\sqrt{n})$. Angluin shows that, even with the presence of $z$ Byzantine agents, the protocol will converge in $O(n \log n)$ interactions. This, however, requires some modifications to both the initial majority requirements as well as the definition of convergence. Due to the fact that any Byzantine agent at any time can shift the state to something that would not be possible in the presence of only non-byzantine agents. A Byzantine agent could shift to a $y$ agent while there are no non-byzantine $y$ agents left. This forces the convergence acceptance criteria to be slackened a bit, allowing some non-byzantine agents to be in the incorrect state. Additionally, there exists a possibility where the inclusion of Byzantine agents leads the system to a stable state with only $b$. Angluin shows that even with these additional complexities, the probability of reaching the $b$ corner (as visualized in Figure \ref{fig:configurationSpace}) is small and that reaching the $x$ and $y$ corners still does not require that many interactions. The convergence time with the inclusion of Byzantine agents is presented by Angluin in \thref{theorem4}.
+ 
+ \begin{theorem}\thlabel{theorem4}
+    \textit{Let $\tau$ be the time at which $x \geq n - \sqrt{n}, y \geq n - \sqrt{n}$, or $v \leq \sqrt{n}$ first holds. Let $v_0$ be the initial number of $x$'s and $y$'s. Then for any fixed $c > 0$ and sufficiently large $n$, if $c_0 \geq \sqrt{n} + c \log_7n$, then}
+    \begin{align}
+        \Pr [ \tau_* \geq 6769n \log n + 6773 c n \log n + 2552n or v_{\tau} \leq \sqrt{n}] = n^{-c+o(1)}.  \label{angluinTheorem4} 
+    \end{align}
+ \end{theorem} 
+ 
 %% ---------------------------------------------------
 %% RESULTS FROM GENERALIZATION PAPER
 \subsection{Generalization}
