@@ -11,6 +11,22 @@
  We write \inlineMath{f(n) = O(g(n))}, if there exists a constant
  \inlineMath{c > 0} and \inlineMath{k > 0}, such that \inlineMath{0 \leq f(n) \leq cg(n) \: \forall \: n \geq k}
  \end{definition}
+
+In addition to Big O, used for upper bounds, there is the Big Omega ($\Omega$) and little Omega ($\omega$) bounds. These are used for lower bounds of algorithms. 
+
+ \begin{definition}
+ We write $f(n) = \Omega(g(n))$, if there exists a constant
+ \inlineMath{c > 0} and \inlineMath{k > 0}, such that $f(n) \geq cg(n) \geq 0 \: \forall \: n \geq k$
+ \end{definition}
+
+ \begin{definition}
+ We write $f(n) = \omega(g(n))$, if there exists a constant
+ \inlineMath{c > 0} and \inlineMath{k > 0}, such that $f(n) > cg(n) \geq 0 \: \forall \: n \geq k$
+ \end{definition}
+
+
+%%------------------------------------------------------------------------------------
+%% Distributed system
 \subsection{Distributed system}
 
 A distributed system is a set of networked computers, which coordinate their actions through communicating by messages. A distributed system can be modelled as a single coherent system. We can define this system as a set of nodes, connected in a network, that collectively coordinate and execute tasks.

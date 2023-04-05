@@ -11,7 +11,7 @@ The consensus problem is fundamental challenge in the field of distributed compu
 %% INTRODUCTION
 \subsubsection{Introduction} \label{angluinIntroduction}
 
-A classic population protocol for approximate majority consensus was presented for a simple 3-state system by Angluin in \cite{angluinSimplePopulationProtocol2008}. The protocol presented is shown to converge to a consensus in \inlineMath{O(n \log n)} interactions with high probability. It is also shown that the output value is correct, meaning it matches the initial majority, with high probability if the initial net majority is \inlineMath{w(\sqrt{n} \log n)}.
+One of the first population protocol for approximate majority consensus was presented for a simple 3-state system by Angluin in \cite{angluinSimplePopulationProtocol2008}. The protocol presented is shown to converge to a consensus in \inlineMath{O(n \log n)} interactions with high probability. It is also shown that the output value is correct, meaning it matches the initial majority, with high probability if the initial net majority is $\omega(\sqrt{n} \log n)$.
 
 The protocol is a simple 3-state protocol, meaning \inlineMath{Q = \{x, y, b\}}. The purpose of the protocol is to make all agents decide on the initial majority state, either \inlineMath{x} and \inlineMath{y}. The extra state \inlineMath{b} is a an \emph{blank} state. The idea of the protocol is that when two agents with different states meet in an interaction, the \emph{responder} abandons its state and enters the blank state \inlineMath{b}. If an agent with the blank state \inlineMath{b} interacts with another agent, it adopts the other agents state, assuming the other agent does not also have the blank state \inlineMath{b}. Because the collisions between agents are chosen by an adversary, the interactions between agents with the opposite state are equally balanced. However, because an agent with the blank state is more likely to interact with an agent with the initial majority state, the initial majority will increase until all agents have the same state. Once all agents have converged to the same state, the protocol is finished and the system has reached consensus. 
 
@@ -19,7 +19,7 @@ Furthermore, Angluin shows that with high probability that the inclusion of \inl
 
 \subsubsection{Notations}
 
-Like previously mentioned, the agents in the system can have the states in \inlineMath{Q = \{x, y, b\}}, where \inlineMath{b} is the \emph{blank} state. We can map out all possible interactions between agents of different states in \inlineMath{Q} in the following table
+The agents in the system can have the states in \inlineMath{Q = \{x, y, b\}}, where \inlineMath{b} is the \emph{blank} state. We can map out all possible interactions between agents of different states in \inlineMath{Q} in the following table
 
 \begin{figure}[H]
     \centering
@@ -40,7 +40,7 @@ Like previously mentioned, the agents in the system can have the states in \inli
 
 All interactions modify the \emph{responders} state. This makes the protocol \emph{one-way}. Notable is also that not all interactions changes the states. For example \inlineMath{xx} does not change any state. The interactions that do change states are \inlineMath{xy, yx, yb, xb}.The system can be in three stable configurations \inlineMath{C}: all \inlineMath{b}'s, all \inlineMath{x}'s or all \inlineMath{y}'s. The first one of the previously named configurations cannot be reached from any configuration containing anything else than \inlineMath{b}'s. The two latter configurations are also stable and from every configuration made up of not only \inlineMath{b}'s, one of them can be reached.
 
-Let \inlineMath{x_t, y_t and b_t} be the number of \inlineMath{x, y} and \inlineMath{b} after \inlineMath{t} interactions. Let the \emph{convergence time} $\tau_*$ of the protocol be the first time \inlineMath{t} at which \inlineMath{x_t = n} or \inlineMath{y_t = n}.
+Let \inlineMath{x_t, y_t} and $b_t$ be the number of \inlineMath{x, y} and \inlineMath{b} after \inlineMath{t} interactions. Let the \emph{convergence time} $\tau_*$ of the protocol be the first time \inlineMath{t} at which \inlineMath{x_t = n} or \inlineMath{y_t = n}.
 
 To reduce size of explanations, we also define:
 \begin{description}
@@ -50,7 +50,17 @@ To reduce size of explanations, we also define:
     \item[] \inlineMath{g = 1/n(n - 1)}
 \end{description}
 
-This definition of $u$ and $v$ exposes the symmetry between $x$ and $y$. The variable $g$ gives us the opportunity to calculate the probability of an interaction happening. For example $gvb$ gives the probability of a non-blank agent interacting with a blank agent. To define interactions and sums of interactions, indicator variables are used. For example, let $I^{vb}_t$ be any interaction between a $xy$ or $yx$ pair at time $t$. All indicator variables $I_t$ have a corresponding sum variable $S_t = \sum^t_{i=1}I_i$ that describes the total amount of times this indicator event has occurred up until time $t$. The following indicator variables will be used:
+This definition of $u$ and $v$ exposes the symmetry between $x$ and $y$. The variable $g$ gives us the opportunity to calculate the probability of an interaction happening. For example $gvb$ gives the probability of a non-blank agent interacting with a blank agent. We define a configuration space with four regions: a central space where the $x, y$ and $b$ are quite evenly balanced and three corner regions where the amount of agents with status $x, y$ or $b$, depending on the corner, is almost $n$. The configuration space is visualized in Figure \ref{fig:configurationSpace}.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width = 0.65\textwidth]{figures/configuration_space.svg}
+    \caption{Configuration space}
+    \label{fig:configurationSpace}
+\end{figure}
+
+
+To define interactions and sums of interactions, indicator variables are used. For example, let $I^{vb}_t$ be any interaction between a $xy$ or $yx$ pair at time $t$. All indicator variables $I_t$ have a corresponding sum variable $S_t = \sum^t_{i=1}I_i$ that describes the total amount of times this indicator event has occurred up until time $t$. The following indicator variables will be used:
 
 \begin{table}[H]
     \centering
@@ -81,16 +91,29 @@ This definition of $u$ and $v$ exposes the symmetry between $x$ and $y$. The var
 %% RESULTS FROM SIMPLE PROPROT
 \subsubsection{Results}
 
-The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2008} were briefly described in \ref{angluinIntroduction}. By the proofs presented in \cite{angluinSimplePopulationProtocol2008}, a high-probability bound of the total interactions done before reaching convergence is presented in the following theorem.
+The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2008} were briefly described in section \ref{angluinIntroduction}. The protocol itself is very simple, agents interacting according to the rules set in figure \ref{fig:QInteractions} will converge towards a consensus. By the proofs presented in \cite{angluinSimplePopulationProtocol2008}, a high-probability bound for the total interactions done before reaching convergence can be presented with the following theorem.
 
- \begin{theorem}
-    \emph{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c = 0} and sufficiently large \inlineMath{},}
+ \begin{theorem}\thlabel{theorem1}
+    \emph{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c > 0} and sufficiently large $n$,}
     \begin{align}
-        \centerline{$Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}    
+        \centerline{$Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}  \label{angluinTheorem1} 
     \end{align}
  \end{theorem}
 
-The parameter $c$ is a fixed positive error parameter $c > 0$. The convergence time $\tau$ will be the sum of all indicator variable sums at the time of $\tau$, $\tau = S^c_\tau + S^b_\tau + S^x_\tau + S^y_\tau$. This is
+\ref{angluinTheorem1} in \thref{theorem1} gives us is a high probability upper bound for $\tau_*$. The constants in this theorem are large and it is shown in \cite{angluinSimplePopulationProtocol2008} that simulations produce much smaller constants, however, theorem \ref{theorem1} gives us a theoretical upper bound for the protocol in a system with only non-byzantine agents. This convergence is quite quick, but does however require a initial margin between the population size of $x$ and $y$ in the initial state of the system. The next main result Angluin shows in \cite{angluinSimplePopulationProtocol2008} is the lower bound for the difference between initial population sizes that the protocol tolerates, still producing a high probability convergence. This lower bound is presented in \thref{theorem2}
+
+
+ \begin{theorem}\thlabel{theorem2}
+    \textit{With high probability, the 3-state approximate majority protocol converges to the initial majority value if the difference between the initial majority and initial minority populations is } $\omega(\sqrt{n} \log n)$.
+ \end{theorem} 
+
+ Angluin also explores the correctness of the protocol in the case where the protocol has an epidemic-triggered start in \cite{angluinSimplePopulationProtocol2008}. The difference here compared to the systems previously discussed is that agents have an additional \emph{active/inactive} property. The initial state contains some subset of active and some subset of inactive agents. The inactive agents gets recruited into the computation of the protocol by active agents. It is shown in \cite{angluinSimplePopulationProtocol2008} that to guarantee a convergence to the correct value, a larger initial majority is needed, meaning a larger lower bound. The third main Angluin presents in \cite{angluinSimplePopulationProtocol2008} is \thref{theorem3}.
+
+ \begin{theorem}\thlabel{theorem3}
+    \textit{Let $\epsilon > 0$. If the difference between the initial majority and initial minority populations is $\Omega(n^{3/4+\epsilon})$ and there is exactly one active agent, then with high probability, the epidemic-triggered approximate majority protocol converges to the initial value.}
+ \end{theorem} 
+
+ The inclusion of Byzantine agents in the system is also studied in \cite{angluinSimplePopulationProtocol2008}. A new group of agents $z$ is introduced into the system, where $z = o(\sqrt{n})$. Angluin shows that 
 
 %% ---------------------------------------------------
 %% RESULTS FROM GENERALIZATION PAPER
