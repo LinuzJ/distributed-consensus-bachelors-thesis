@@ -13,11 +13,11 @@ The consensus problem is fundamental challenge in the field of distributed compu
 
 One of the first population protocol for approximate majority consensus was presented for a simple 3-state system by Angluin in \cite{angluinSimplePopulationProtocol2008}. The protocol presented is shown to converge to a consensus in \inlineMath{O(n \log n)} interactions with high probability. It is also shown that the output value is correct, meaning it matches the initial majority, with high probability if the initial net majority is $\omega(\sqrt{n} \log n)$.
 
-The protocol is a simple 3-state protocol, meaning \inlineMath{Q = \{x, y, b\}}. The purpose of the protocol is to make all agents decide on the initial majority state, either \inlineMath{x} and \inlineMath{y}. The extra state \inlineMath{b} is a an \emph{blank} state. The idea of the protocol is that when two agents with different states meet in an interaction, the \emph{responder} abandons its state and enters the blank state \inlineMath{b}. If an agent with the blank state \inlineMath{b} interacts with another agent, it adopts the other agents state, assuming the other agent does not also have the blank state \inlineMath{b}. Because the collisions between agents are chosen by an adversary, the interactions between agents with the opposite state are equally balanced. However, because an agent with the blank state is more likely to interact with an agent with the initial majority state, the initial majority will increase until all agents have the same state. Once all agents have converged to the same state, the protocol is finished and the system has reached consensus. 
+The protocol is a simple 3-state protocol, meaning \inlineMath{Q = \{x, y, b\}}. The purpose of the protocol is to make all agents decide on the initial majority state, either \inlineMath{x} and \inlineMath{y}. The extra state \inlineMath{b} is a an \emph{blank} state. The idea of the protocol is that when two agents with different states meet in an interaction, the \emph{responder} abandons its state and enters the blank state \inlineMath{b}. If an agent with the blank state \inlineMath{b} interacts with another agent, it adopts the other agents state, assuming the other agent does not also have the blank state \inlineMath{b}. Because the collisions between agents are chosen by an adversary, the interactions between agents with the opposite state are equally balanced. However, because an agent with the blank state is more likely to interact with an agent with the initial majority state, the initial majority will increase until all agents have the same state. Once all agents have converged to the same state, the protocol is finished and the system has reached consensus. This protocol is also known as the \emph{Undecided State Dynamics} or \emph{USD} protocol.
 
 Furthermore, Angluin shows that with high probability that the inclusion of \inlineMath{o(\sqrt{n})} Byzantine agents cannot notably delay the protocol converging to a state where the majority of non-Byzantine agents have the correct state. Byzantine agents are agents capable of appearing as any state, regardless of their previous interaction and initial state. The inclusion of these Byzantine agents can, however, keep a small part of of the non-Byzantine agents confused. Additionally, after exponential time on average, the Byzantine agents can eventually push the system to a stable incorrect state, where all of the non-Byzantine agents are blank. In the case that \inlineMath{z} Byzantine agents are included amongst the population \inlineMath{n} of normal agents, any execution select a pair at random from the combined population of \inlineMath{n} and \inlineMath{z}.
 
-\subsubsection{Notations}
+\subsubsection{Notations} \label{notations_angluin_usd}
 
 The agents in the system can have the states in \inlineMath{Q = \{x, y, b\}}, where \inlineMath{b} is the \emph{blank} state. We can map out all possible interactions between agents of different states in \inlineMath{Q} in the following table
 
@@ -94,7 +94,7 @@ To define interactions and sums of interactions, indicator variables are used. F
 The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2008} were briefly described in section \ref{angluinIntroduction}. The protocol itself is very simple, agents interacting according to the rules set in figure \ref{fig:QInteractions} will converge towards a consensus. By the proofs presented in \cite{angluinSimplePopulationProtocol2008}, a high-probability bound for the total interactions done before reaching convergence can be presented with the following theorem.
 
  \begin{theorem}\thlabel{theorem1}
-    \emph{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c > 0} and sufficiently large $n$,}
+    \textit{Let $\tau_*$ be the time at which \inlineMath{x = n} or \inlineMath{y = n} first holds. Then for any fixed \inlineMath{c > 0} and sufficiently large $n$,}
     \begin{align}
         \centerline{$\Pr[\tau_* \geq \log n + 6773cn \log + 2552n] \leq 5n^{-c}$.}  \label{angluinTheorem1} 
     \end{align}
@@ -124,14 +124,16 @@ The main results that Angluin presents in \cite{angluinSimplePopulationProtocol2
  
 %% ---------------------------------------------------
 %% RESULTS FROM GENERALIZATION PAPER
-\subsection{Generalization}
+\subsection{Generalization of the 3-state approximate majority protocol}
 
  \subsubsection{Introduction}
-The protocol presented by Angluin (\cite{angluinSimplePopulationProtocol2008}) in section \ref{3stateApproximatemajority} presents a protocol capable of 
-reaching consensus with a high probability in \inlineMath{O(n \log n)} interactions. 
+Let $k$ be the amount of potential states in $Q$, excluding the blank state $b$. More formally, $k = |Q \setminus \{b\}|$. The protocol presented by Angluin (\cite{angluinSimplePopulationProtocol2008}) in section \ref{3stateApproximatemajority} presents a protocol capable of reaching consensus with a high probability in \inlineMath{O(n \log n)} when $k = 2$. The convergence rate of this protocol for $k > 2$ long remained unsettled, until Aspnes explored it in \cite{AspnesFastConverganceOfKOpinion2023}. In \cite{AspnesFastConverganceOfKOpinion2023}, Aspnes manages to show that under some mild assumptions it is possible to present a bound on the convergence of the (USD) protocol. 
 
 \subsubsection{Notations}
-Paper specific notations and preliminaries
+
+In general most, notations in this paper are similar to the ones found in section \ref{notations_angluin_usd}, however due to the fact that \cite{AspnesFastConverganceOfKOpinion2023} explores higher dimensions as a consequence of $k > 2$, some additional notations are required. 
+
+A configuration at a specific time $t$ in the execution of the protocol $C_t$, will now also be refereed to as $\textbf{x}(t)$. Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. 
 
 \subsubsection{Results}
 Present results of \cite{AspnesFastConverganceOfKOpinion2023}
