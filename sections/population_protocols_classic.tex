@@ -133,10 +133,16 @@ Let $k$ be the amount of potential states in $Q$, excluding the blank state $b$.
 
 In general most notations in this paper are similar to the ones found in section \ref{notations_angluin_usd}, however due to the fact that \cite{AspnesFastConverganceOfKOpinion2023} explores higher dimensions as a consequence of $k > 2$, some additional notation is required.
 
-A configuration at a specific time $t$ in the execution of the protocol $C_t$, will now also be refereed to as $\textbf{x}(t)$. Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. 
+A configuration $C_t$ at time $t$ in the execution of the protocol has a corresponding configuration vector $\textbf{x}(t)$. Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. When $t = 0$ we assume that $x_1(t) \geq x_2(t) \geq ... \geq x_k(t)$. 
+
+When $t > 0$ we call the index of the state with the largest population $max(t)$. The amount of agents of the largest state at time $t$ we define as $x_{max}(t)$. 
+
+A state $i$ from $Q$ is called \emph{significant} if at time $t$, $x_i(t) > x_max(t) - \alpha \cdot \sqrt{n} \log n$, where $\alpha$ is some fixed constant. If a state $i$ is not significant, it is called \emph{insignificant}. If for a configuration $C$ there exists a state $s$ such that for all other states $s \neq i$ we have $x_s \geq x_i + \beta$, configuration $C$ has a \emph{additive bias} $\beta$. Similarly, if there exists a state $s$ in configuration configuration $C$ where for all other states $s \neq i$, 
+$x_s \geq x_i \cdot \alpha$ holds true, the configuration $C$ has a \emph{multiplicative bias} $\alpha$. 
 
 \subsubsection{Results}
-Present results of \cite{AspnesFastConverganceOfKOpinion2023}
+
+
 
 %% END TEXT %%
 \clearpage
