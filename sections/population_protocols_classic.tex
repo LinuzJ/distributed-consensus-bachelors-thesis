@@ -142,6 +142,19 @@ $x_s \geq x_i \cdot \alpha$ holds true, the configuration $C$ has a \emph{multip
 
 \subsubsection{Results}
 
+In \cite{AspnesFastConverganceOfKOpinion2023}, Aspnes et al. bounds the convergence time of the undecided state dynamics protocol under some assumptions. In order to bound the protocol in terms of $k$, they assume $x_1(0) > n/(2k)$. \thref{theorem5} is a slightly modified version of the main theorem in \cite{AspnesFastConverganceOfKOpinion2023} to match the preliminaries in this paper.
+
+ \begin{theorem}\thlabel{theorem5}
+    \textit{Let $c > 0$ be an arbitrary constant and let $\textbf{x}(0)$ be an initial configuration with $k \leq c \cdot \sqrt{n}/\log^2(n) $ opinions with $u(0) \leq (n - x_1(0))/2 and x_1 \geq x_i(0) \ \forall i \in [k]$. Then \cite{AspnesFastConverganceOfKOpinion2023} proves that all agents agree on state 1 within}
+
+    \begin{enumerate}
+        \item \textit{$O(n \log n + n^2 / x_1(0)) = O(n \log n + n \cdot k)$ interactions if }$\textbf{x}(0)$ \textit{has a multiplicative bias  of at least $1 + \varepsilon$ for an arbitrary constant $\varepsilon$.}
+        \item \textit{$O(n^2 \log n/x_1(0)) = O(k \cdot n \log n)$ interactions if} $\textbf{x}(0)$ \textit{has a additive bias  of at least $\Omega(\sqrt{n} \log n)$.}
+    \end{enumerate}
+
+    \textit{Without any bias all agents agree on a significant opinion within $O(n^2 \log n / x_1(0) = O(k \cdot n \log n$ interactions}
+ \end{theorem} 
+
 
 
 %% END TEXT %%
