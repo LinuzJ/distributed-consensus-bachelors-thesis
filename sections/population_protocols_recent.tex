@@ -1,13 +1,56 @@
 \section{Optimizations of population protocols}
 %% TEXT %%
-
-\subsection{Optimizations}
+The population protocol in section \ref{Section3} solved the approximate majority problem. This, however, limits the use cases of the protocol as it requires some specific initial bias to converge to the correct solution.  In this section a stable population protocol, presented by Doty et al. in \cite{dotyTimeSpaceOptimal2022}, that solves the \emph{exact} majority problem when $k > 2$. 
 
 \subsection{Notations}
 
-\subsection{Results}
-\linus{TODO: Go through the results of the time and space time optimal protocol for exact majority \cite{dotyTimeSpaceOptimal2022}}
+A \emph{nonuniform} population protocol is one where the set of transitions used for a specific population size $n$, depends on the value $\lceil \log n \rceil$. Essentially this means that in a nonuniform protocol, for different population sizes $n$, different pairs of $Q$ and $\delta$ are allowed (up to $\lceil \log n \rceil$ combinations). In \cite{dotyTimeSpaceOptimal2022}, all of these combinations combined are referred to as a single protocol. 
 
+Initially each agent has a \emph{bias}: $+1$ for state $x$ and $-1$ for state $y$. Let the \emph{initial gap} be the sum over the entire population $g = \sum_v v.bias$. $g$ is maintained as an invariant. 
+
+For a constant $L = \lceil \log n \rceil$, the biases for agents change to a minimum of $\pm \frac{1}{2^L}$ through two types of interactions: \emph{cancel reactions} $(+\frac{1}{2^i}, -\frac{1}{2^i}) \mapsto (0, 0)$ and \emph{split reactions} $(\pm \frac{1}{2^i}, 0) \mapsto (\pm \frac{1}{2^{i + 1}}, \pm \frac{1}{2^{i + 1}})$.
+
+The \emph{gap} in the protocol is defined by the sum over the entire population: \\ \mbox{$\sum_v$ sign($v.bias$)}.
+
+Let $c$ be an agent in a sub-population of clock agents. \emph{Drip reactions} for the sub-population are the following: $(c_i, c_i) \mapsto (c_i, c_{i + 1})$. \emph{Epidemic reactions} for the same population are: $(c_i, c_j) \mapsto (c_{max(i, j)}, c_{max(i, j)})$.
+
+\subsection{High-level overview}
+
+The main idea of the protocol is having agents interact with each other through cancel and split reactions. The cancel and split reactions average the bias between the two agents interacting with each other, however only when the resulting average is a power of 2 or 0. If this was not the case, and all averages were accepted, then all bias would converge to $\frac{g}{n}$. This would also consume more than the allowed $\log n$ memory units. The unbiased agents that are required for the split reactions are partially synchronized with a field \emph{hour}. The addition of the field \emph{hour} requires $\log n$ more memory, for $0_0, 0_1, 0_2, ..., 0_L$. The split reaction with the hour field included looks like
+\begin{align}
+    (\pm \frac{1}{2_i}, 0_h) \mapsto (\pm \frac{1}{2^{i + 1}}, \pm \frac{1}{2^{i + 1}}) \text{      if, } h > i.  \label{splitreaction}
+\end{align}
+The new split reaction \ref{splitreaction} will also hold until $hour \geq h$ before executing a split reaction that results in $bias = \pm \frac{1}{2^h}$. In \cite{dotyTimeSpaceOptimal2022}, a fast clock using $O(1)$ time per hour is used. The aforementioned \emph{hour} field, used by unbiased agents is synchronized to a different population (still part of $n$) of clock agents, that instead of \emph{hour}, use the field \emph{minute}. In one \emph{hour} there are $k$ consecutive $minutes$. Within this population of clock agents, $minutes$ tick forward using drip reactions and catch up using epidemic reactions. Due to $O(1)$ not being enough time to synchronize all agents, only a large constant of agents will be synchronized to the latest \emph{hour}. Doty et al. proves in \cite{dotyTimeSpaceOptimal2022} that even though not all agents are up to date, the synchronization keeps the $hour$ and $bias$ sufficiently concentrated.
+
+To clean up all agents with the incorrect state, the protocol uses a new population of agents, called \emph{Reserve} agents, that enable more split reactions for agents with large bias values of $|bias| > \frac{1}{2^l}$. After this and after cancel reactions with the majority agents, all agents with the minority state still left must have $|bias| < \frac{1}{2^{l + 2}}$. 
+
+At this point there are still agents with the minority state left that have a small bias. To get rid of these, other agents that have larger bias \emph{consume} them. In \cite{dotyTimeSpaceOptimal2022}, the example of agents with bias $+ \frac{1}{4}$ and $- \frac{1}{256}$ is used. In this example the positive agent can be seen as "holding" the entire bias $+ \frac{1}{4} - \frac{1}{256} = + \frac{63}{256}$. This value is, however, not in the accepted values. Due to this, it cannot longer participate in future averaging interactions. In \cite{dotyTimeSpaceOptimal2022}, however, it is shown that with high probability there are enough majority agents to eliminate all of the remaining minority agents through the previously described \emph{consumption reactions}.
+
+The final part of the protocol checks for positive and negative bias. If one has been removed completely, the system stabilizes to the correct output. If there still are both positive and negative bias, some error has occured.
+
+In the case of a tie, meaning equal size of state $x$ and $y$ in the initial configuration, this protocol detects it with high probability. In an initial configuration where a tie is present, $g = 0$. And with high probability, Doty et al. shows in \cite{dotyTimeSpaceOptimal2022}, that all agents will finish with $bias \in \{ 0, \pm \frac{1}{2^L} \}$. 
+
+
+\subsection{Results}
+
+The main theorem in \cite{dotyTimeSpaceOptimal2022} is the following. 
+
+ \begin{theorem}\thlabel{theorem6}
+    \textit{
+        There is a nonuniform population protocol Nonuniform-Majority, using $O(\log n)$ units of memory, that stably computes majority in $O(\log n)$ stabilization time, both in expectation and with high probability.
+    }
+ \end{theorem} 
+
+The protocol that Doty et al. presents in \cite{dotyTimeSpaceOptimal2022} is a fast and
+
+- nonuniform
+- k = 2
+- faster, but uses more memory
+- uniformity possbile, but large increase in memory
+
+
+\subsection{Generalization}
+\linus{other paper \cite{bankhamerPopulationProtocolsExact2022}. k>2}
 
 %% END TEXT %%
 % \clearpage

@@ -1,8 +1,8 @@
-\section{Population Protocols}
+\section{Population Protocols} \label{Section3}
 %% TEXT %%
 \subsection{Background}
 
-The consensus problem is fundamental challenge in the field of distributed computing. The problem has been studied extensively in literature and there are multiple popular algorithms for solving this problem. In asynchronous systems the major type of algorithm that has been studied is population protocols
+The consensus problem is fundamental challenge in the field of distributed computing. The problem has been studied extensively in literature and there are multiple popular algorithms for solving this problem. In asynchronous systems a major type of algorithm that has been studied is population protocols. A general overview of a classic population protocol (\cite{angluinSimplePopulationProtocol2008}), as well as a generalization of that protocol (\cite{AspnesFastConverganceOfKOpinion2023}) will be presented. 
 
 
 \subsection{3-state approximate majority protocol} \label{3stateApproximatemajority}
@@ -128,11 +128,13 @@ The main results that Angluin et al. presents in \cite{angluinSimplePopulationPr
  \subsubsection{Introduction}
 Let $k$ be the amount of potential states in $Q$, excluding the blank state $b$. More formally, $k = |Q \setminus \{b\}|$. The protocol presented by Angluin et al. (\cite{angluinSimplePopulationProtocol2008}) in section \ref{3stateApproximatemajority} is shown to be capable of reaching consensus with a high probability in \inlineMath{O(n \log n)} when $k = 2$. While the convergence rate for this protocol (USD) for $k > 2$ has been studied in \emph{synchronous} systems previously in \cite{becchetti2015}, it was not until very recently that the USD protocol was studied in \emph{asynchronous} systems for $k > 2$. In \cite{AspnesFastConverganceOfKOpinion2023}, Aspnes et al. manages to show that under some mild assumptions it is possible to present a bound on the convergence of the (USD) protocol in a asynchronous system. 
 
+\linus{Add part about how \cite{becchetti2015} had larger initial bias than this}
+
 \subsubsection{Notations}
 
 In general most notations in this paper are similar to the ones found in section \ref{notations_angluin_usd}, however due to the fact that \cite{AspnesFastConverganceOfKOpinion2023} explores higher dimensions as a consequence of $k > 2$, some additional notation is required.
 
-A configuration $C_t$ at time $t$ in the execution of the protocol has a corresponding configuration vector $\textbf{x}(t)$. Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. When $t = 0$ we assume that $x_1(t) \geq x_2(t) \geq ... \geq x_k(t)$. 
+A configuration $C_t$ at time $t$ in the execution of the protocol has a corresponding configuration vector $\textbf{x}(t)$. \linus{State that this is similar to S from prelims} Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. When $t = 0$ we assume that $x_1(t) \geq x_2(t) \geq ... \geq x_k(t)$. 
 
 When $t > 0$ we call the index of the state with the largest population $max(t)$. The amount of agents of the largest state at time $t$ we define as $x_{max}(t)$. 
 
@@ -154,7 +156,9 @@ In \cite{AspnesFastConverganceOfKOpinion2023}, Aspnes et al. bounds the converge
     \textit{Without any bias all agents agree on a significant opinion within $O(n^2 \log n / x_1(0) = O(k \cdot n \log n)$ interactions with high probability}
  \end{theorem} 
 
- \thref{theorem5} splits up the convergence rates into three different scenarios where the convergence rates depend on the type of bias in the initial configurations ($C_0$). The two scenarios where the protocol converges to the correct status (status 1 in this case) both have some declared bias at $t = 0$. If no initial bias is present at $t = 0$, the protocol converges to some significant state in $O(k \cdot n \log n)$ steps with high probability. If the initial configuration has multiplicative bias of at least $1 + \varepsilon$ for an arbitrary constant $\varepsilon$, \ref{theorem5_1} shows that the protocol will converge in $O(n \log n + n \cdot k)$ interactions with high probability. In the second case \ref{theorem5_2}, where the the initial configuration has additive bias of at least $\Omega(\sqrt{n} \log n)$, the protocol converges in $O(k \cdot n \log n)$ interactions with high probability. Observe that the convergence time in the initial configuration with additive bias and without bias is the same, although \ref{theorem5_1} converges to a correct state while the case without inital bias converges to some significant state. 
+ \thref{theorem5} splits up the convergence rates into three different scenarios where the convergence rates depend on the type of bias in the initial configurations ($C_0$). The two scenarios where the protocol converges to the correct status (status 1 in this case) both have some declared bias at $t = 0$. If no initial bias is present at $t = 0$, the protocol converges to some significant state in $O(k \cdot n \log n)$ steps with high probability. If the initial configuration has multiplicative bias of at least $1 + \varepsilon$ for an arbitrary constant $\varepsilon$, \ref{theorem5_1} shows that the protocol will converge in $O(n \log n + n \cdot k)$ interactions with high probability. In the second case \ref{theorem5_2}, where the the initial configuration has additive bias of at least $\Omega(\sqrt{n} \log n)$, the protocol converges in $O(k \cdot n \log n)$ interactions with high probability. Observe that the convergence time in the initial configuration with additive bias and without bias is the same, although \ref{theorem5_1} converges to a correct state while the case without initial bias converges to some significant state. 
+
+ Aspnes et al. do not consider the possibility of Byzantine agents present in the system in \cite{AspnesFastConverganceOfKOpinion2023}.
 
 
 %% END TEXT %%

@@ -5,11 +5,11 @@
 %% BIG O
 \subsection{Big O notation}
 
- The Big $O$ is a notation that describes an upper bound to the asymptotic behaviour of functions, when the argument goes to intinity. In computer science the Big $O$ notation is used to analyze the time and space complexity of algorithms. The Big $O$ notation is a function of \inlineMath{n}, where \inlineMath{n} is the number of items handled in the algorithm. Described informally using the equation \inlineMath{f(n) = O(g(n))}, \inlineMath{f(n)} is positive and smaller than some constant multiplied with \inlineMath{g(n)}.
+ The Big $O$ is a notation that describes an upper bound to the asymptotic behaviour of functions, when the argument goes to infinity. In computer science the Big $O$ notation is used to analyze the time and space complexity of algorithms. The Big $O$ notation is a function of \inlineMath{n}, where \inlineMath{n} is the number of items handled in the algorithm. Described informally using the equation \inlineMath{f(n) = O(g(n))}, \inlineMath{f(n)} is positive and smaller than some constant multiplied with \inlineMath{g(n)}.
  
  \begin{definition}
- We write \inlineMath{f(n) = O(g(n))}, if there exist two constants
- \inlineMath{c > 0} and \inlineMath{k > 0}, such that \inlineMath{0 \leq f(n) \leq cg(n) \ \forall n \geq k}.
+ We write \inlineMath{f(n) = O(g(n))} if there exist two constants
+ \inlineMath{c > 0} and \inlineMath{k > 0} such that \inlineMath{0 \leq f(n) \leq cg(n) \ \forall n \geq k}.
  \end{definition}
 
 In addition to Big O, used for upper bounds, there is the Big Omega ($\Omega$) and little omega ($\omega$) notation. These are used to describe the asymptotic lower bounds of functions. 
@@ -78,7 +78,7 @@ In a system with \inlineMath{n} agents and \inlineMath{k} states. Majority conse
  
  \emph{Exact} majority consensus is a requirement that the agreement must me made correctly even though the initially most frequent and second most frequent only differ in size by 1. In literature, the terms \emph{majority} and \emph{plurality} are often used interchangeably. \emph{Majority} will be used in this thesis for consistency.
 
- \linus{Add approximate majority}
+\emph{Approximate} majority consensus is the requirement of the initial majority state having at least a certain amount 
 
 
 %%------------------------------------------------------------------------------------
