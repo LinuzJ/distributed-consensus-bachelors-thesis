@@ -1,6 +1,7 @@
 \section{Conclusion} 
 %% TEXT %%
-\linus{TODO: Wrap up results from previous two sections}
+While consensus algorithms have been researched since the eighties, population protocols are a rather new research domain. There has however been lots of progress in the research of population protocols recently. Angluin et al. introduced the undecided state dynamics protocol (3-state approximate majority protocol) in \cite{angluinSimplePopulationProtocol2008} that solved the approximate majority problem for a system with $k = 2$ states within $O(n \log n)$ interactions with high probability under the constraint that the initial majority $\omega(\sqrt{n} \log n)$. The USD protocol is limited by its initial majority requirement as well as $k = 2$. The latter was solved in \cite{AspnesFastConverganceOfKOpinion2023} by Aspnes et al. when they presented a generalization of the USD protocol allowing it to converge quickly with $k > 2$. The generalized USD protocol using mild assumptions about $k$ solves with high probability the approximate majority consensus problem in $O(k n \log n)$ interactions with an initial additive bias of $\Omega(\sqrt{n} \log n)$. In the case of an multiplicative bias the convergence time for the protocol is improved. 
+
 
 Conclusion wrapping up the results from section \ref{angluinIntroduction}. Add consideration (Byzantine  etc.). 
 Still to be researched, uniform protocols. 
