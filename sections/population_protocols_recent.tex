@@ -51,7 +51,7 @@ In comparison to the undecided state dynamics protocol presented by Angluin et a
 
 In a recent paper by Bankhamer et al. (\cite{bankhamerPopulationProtocolsExact2022}), the protocol discussed in \ref{Section4Results} was extended to support $k > 0$ initial states. While it is known that any always correct protocol requires memory capable of storing $\Omega(k^2)$ values per agent, Bankhamer et al. reduce this drastically by allowing some insignificant failure probability \cite{ongaroSearchUnderstandableConsensus}. 
 
-\subsubsection{Protocols}
+\subsubsection{Protocols} \label{441}
 
 In \cite{bankhamerPopulationProtocolsExact2022} presents a protocol for solving the exact majority problem for an arbitrary number $k$ states, where $k > 2$. Three protocols are presented. The first one, called \emph{simple algorithm}, relies on ordering of the states from 1 to $k$ to eliminate non-majority in $k-1$ tournaments. The second protocol removes the reliance on the ordering of states, but sacrifices some time making it slower to reach consensus. The final protocol, called \emph{improved algorithm}, removes insignificant states before staring the tournaments, cutting time to consensus significantly. 
 
@@ -61,6 +61,11 @@ The improved algorithm works in a similar fashion, however, implements a mechani
 
 \subsubsection{Results}
 
+The main result Bankhamer et al. presents in \cite{bankhamerPopulationProtocolsExact2022} is the improved algorithm briefly described in section \ref{441}. The following theorem is a slightly modified version (to match preliminaries and notations of this paper) of the main result of \cite{bankhamerPopulationProtocolsExact2022}
 
-%% END TEXT %%
-% \clearpage
+ \begin{theorem}\thlabel{theorem7}
+    \textit{
+        Assume we have a population of size $n$ with $k$ initial opinions where $x_{max} > n^{\frac{1}{2 + \varepsilon}}$ for some small constant $\frac{1}{2} > \varepsilon > 0$. The \emph{improved algorithm} converges with high probability to the majority opinion in $O(\frac{n}{x_{max} \cdot \log n + \log^2 n})$ parallel time while requiring agents to be capable of storing $O(k \cdot \log \log n + \log n)$ different values.}
+ \end{theorem} 
+
+The \emph{improved algorithm} in \cite{bankhamerPopulationProtocolsExact2022} expands the Nonuniform-Majority protocol from \thref{theorem6} (from \cite{dotyTimeSpaceOptimal2022}) to create a protocol for $k > 2$ number of initial states. This protocol solves the exact majority problem with high probability quickly while only requiring the agents to be able to store $O(k + \log n)$ values. 
