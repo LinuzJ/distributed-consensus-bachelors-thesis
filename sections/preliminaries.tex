@@ -59,8 +59,6 @@ In order to reach consensus, each node in the set \inlineMath{V}, which is the s
 \end{itemize}
 
 
-%% Insert explanation on the graph below
-In Figure \ref{fig:ConsensusProblem} we can see an example of the explanation above. Two nodes propose \emph{proceed} and the third node proposes \emph{abort}, but crashes thereafter. The two correct nodes that remain decide on \emph{proceed}.
 \begin{figure}[H]
     \centering
     \includesvg[width = 0.7\textwidth]{figures/consensus_problem.svg}
@@ -69,7 +67,7 @@ In Figure \ref{fig:ConsensusProblem} we can see an example of the explanation ab
 \end{figure}
 
 
-Figure \ref{fig:ConsensusProblem} presents a highly simplified version of a consensus algorithm. Node $v_1$ and $v_2$ propose \emph{proceed} to the algorithm and $v_3$ proposes \emph{abort} but immediately after crashes. The two nodes remaining nodes are correct and decide to \emph{proceed}.
+See figure \ref{fig:ConsensusProblem} for a highly simplified version of a consensus algorithm. Node $v_1$ and $v_2$ propose \emph{proceed} to the algorithm and $v_3$ proposes \emph{abort} but immediately after crashes. The two nodes remaining nodes are correct and decide to \emph{proceed}.
 
 %%------------------------------------------------------------------------------------
 %% MAJORITY CONSENSUS
@@ -96,7 +94,7 @@ A distributed system can be modeled in a synchronous or an asynchronous setting.
 %%------------------------------------------------------------------------------------
 %% POPULATION PROTOCOLS
 \subsection{Population protocol}
- A population protocol is a theoretical model used for modelling collections of agents capable of moving, interacting and computation. The goal of the protocol is for the collection of agents to converge towards a correct output value. In the basic population protocol model, an input value is distributed to the the collection of agents. Agents have pairwise interaction in the order set by a scheduler, subject to some fairness guarantee. Each agent in the collection is a type of finite state machine and the protocol for the system describes how the the interaction between two agents change their respective states. No failures occur for the agents in the system. The output values of the agents change over time and eventually, they must converge to the correct output value for the set of input values initially distributed to the agents \cite{aspnesIntroductionPopulationProtocols2009}. 
+ A population protocol is a theoretical model used for modelling collections of agents capable of moving, interacting and computation. The goal of the protocol is for the collection of agents to converge towards a correct output value. In the basic population protocol model, an input value is distributed to the the collection of agents. Agents have pairwise interaction in the order set by a scheduler, subject to some fairness guarantee. Each agent in the collection is a type of finite state machine and the protocol for the system describes how the interaction between two agents change their respective states. No failures occur for the agents in the system. The output values of the agents change over time and eventually, they must converge to the correct output value for the set of input values initially distributed to the agents \cite{aspnesIntroductionPopulationProtocols2009}. 
 
  A protocol is formally defined by
  \begin{itemize}
