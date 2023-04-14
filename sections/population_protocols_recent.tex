@@ -1,6 +1,6 @@
 \section{Optimizations of population protocols}
 %% TEXT %%
-The population protocol in section \ref{Section3} solved the approximate majority problem. This, however, limits the use cases of the protocol as it requires some specific initial bias to converge to the correct solution.  In this section a stable population protocol, presented by Doty et al. in \cite{dotyTimeSpaceOptimal2022}, that solves the \emph{exact} majority problem when $k > 2$. 
+The population protocol in section \ref{Section3} solved the approximate majority problem. This, however, limits the use cases of the protocol as it requires some specific initial bias to converge to the correct solution.  In this section a stable nonuniform population protocol, presented by Doty et al. in \cite{dotyTimeSpaceOptimal2022}, that solves the \emph{exact} majority problem when $k = 2$. 
 
 \subsection{Notations}
 
@@ -8,7 +8,7 @@ A \emph{nonuniform} population protocol is one where the set of transitions used
 
 Initially each agent has a \emph{bias}: $+1$ for state $x$ and $-1$ for state $y$. Let the \emph{initial gap} be the sum over the entire population $g = \sum_v v.bias$. $g$ is maintained as an invariant. 
 
-For a constant $L = \lceil \log n \rceil$, the biases for agents change to a minimum of $\pm \frac{1}{2^L}$ through two types of interactions: \emph{cancel reactions} $(+\frac{1}{2^i}, -\frac{1}{2^i}) \mapsto (0, 0)$ and \emph{split reactions} $(\pm \frac{1}{2^i}, 0) \mapsto (\pm \frac{1}{2^{i + 1}}, \pm \frac{1}{2^{i + 1}})$.
+Let the constant $L = \lceil \log n \rceil$ be the amount of different values (or biases) an agent in the system can store. For an agent to be able to store $L$ different values, $\log \log n \ + \ O(1)$ bits of memory is needed. Through the agents interactions with each other, they modify their state to any a value in the following set: $\{ 0, \pm \frac{1}{2}, \pm \frac{1}{4}, ...,  \pm \frac{1}{2^L} \}$. The interactions happen through two types of interactions: \emph{cancel reactions} $(+\frac{1}{2^i}, -\frac{1}{2^i}) \mapsto (0, 0)$ and \emph{split reactions} $(\pm \frac{1}{2^i}, 0) \mapsto (\pm \frac{1}{2^{i + 1}}, \pm \frac{1}{2^{i + 1}})$.
 
 The \emph{gap} in the protocol is defined by the sum over the entire population: \\ \mbox{$\sum_v$ sign($v.bias$)}.
 
@@ -16,7 +16,7 @@ Let $c$ be an agent in a sub-population of clock agents. \emph{Drip reactions} f
 
 \subsection{High-level overview}
 
-The main idea of the protocol is having agents interact with each other through cancel and split reactions. The cancel and split reactions average the bias between the two agents interacting with each other, however only when the resulting average is a power of 2 or 0. If this was not the case, and all averages were accepted, then all bias would converge to $\frac{g}{n}$. This would also consume more than the allowed $\log n$ memory units. The unbiased agents that are required for the split reactions are partially synchronized with a field \emph{hour}. The addition of the field \emph{hour} requires $\log n$ more memory, for $0_0, 0_1, 0_2, ..., 0_L$. The split reaction with the hour field included looks like
+The main idea of the protocol is having agents interact with each other through cancel and split reactions. The cancel and split reactions average the bias between the two agents interacting with each other, however only when the resulting average is a power of 2 or 0. The acceptable biases are any value in the following set $\{ 0, \pm \frac{1}{2}, \pm \frac{1}{4}, ...,  \pm \frac{1}{2^L} \}$. $L$ ensures that $\Theta(\log n)$ possible values of \emph{bias} that any agent must be able to store. If this was not the case, and all averages were accepted, then all bias would converge to $\frac{g}{n}$. This would also consume more than the allowed $\log \log n$ bits of memory per agent. The unbiased agents that are required for the split reactions are partially synchronized with a field \emph{hour}. The addition of the field \emph{hour} requires $\log n$ more memory, for $0_0, 0_1, 0_2, ..., 0_L$. The split reaction with the hour field included looks like
 \begin{align}
     (\pm \frac{1}{2_i}, 0_h) \mapsto (\pm \frac{1}{2^{i + 1}}, \pm \frac{1}{2^{i + 1}}) \text{      if, } h > i.  \label{splitreaction}
 \end{align}
@@ -33,23 +33,21 @@ In the case of a tie, meaning equal size of state $x$ and $y$ in the initial con
 
 \subsection{Results}
 
-The main theorem in \cite{dotyTimeSpaceOptimal2022} is the following. 
+The main theorem in \cite{dotyTimeSpaceOptimal2022} is slightly modified to create the following theorem: 
 
  \begin{theorem}\thlabel{theorem6}
     \textit{
-        There is a nonuniform population protocol Nonuniform-Majority, using $O(\log n)$ units of memory, that stably computes majority in $O(\log n)$ stabilization time, both in expectation and with high probability.
+        There is a nonuniform population protocol Nonuniform-Majority, using agents capable of storing $O(\log n)$ different values, that stably computes majority in $O(\log n)$ stabilization time, both in expectation and with high probability.
     }
  \end{theorem} 
 
-The protocol that Doty et al. presents in \cite{dotyTimeSpaceOptimal2022} is a fast and
+The protocol that Doty et al. presents in \cite{dotyTimeSpaceOptimal2022} is capable of quickly solving the exact majority problem in $O(\log n)$ time with high probability using $\log \log n + O(1)$ bits of memory to store $O(\log n)$ different values. The protocol is nonuniform, meaning that all agents must have an estimate of $\lceil \log n \rceil$ embedded in the transition function. Essentially this means that the amount of values $L$ any agent must be capable of storing is a function of $n$. Doty et al. also discusses how the protocol would behave as a uniform protocol, however the protocol would no longer be space optimal due to it needing the memory to store $O(\log n \log \log n)$ different values in each agent. 
 
-- nonuniform
-- k = 2
-- faster, but uses more memory
-- uniformity possbile, but large increase in memory
-
+In comparison to the undecided state dynamics protocol presented by Angluin et al. in \cite{angluinSimplePopulationProtocol2008} and discussed in section \ref{Section3}, the Nonuniform-Majority protocol solves the exact majority problem, making it much more usable. It is also as fast, reaching consensus with high probability in $O(\log n)$ \linus{CHECK TIME DEFINITIONS} time, as the USD protocol while solving the exact majority problem. The drawback of the quickness is the use of memory, as the Nonuniform-Majority protocol uses $O(\log \log n)$ bits of memory.  The protocol is also limited to $k = 2$, meaning the decision is only based on two input states. 
 
 \subsection{Generalization}
+
+
 \linus{other paper \cite{bankhamerPopulationProtocolsExact2022}. k>2}
 
 %% END TEXT %%
