@@ -20,18 +20,21 @@ In addition to Big O, used for upper bounds, there is the Big Omega ($\Omega$) a
  \end{definition}
 
  \begin{definition}
- We write $f(n) = \omega(g(n))$ if there exists a constant
- \inlineMath{c > 0} and \inlineMath{k > 0} such that $f(n) > cg(n) \geq 0 \: \forall \: n \geq k$
- \fda{If I am not wrong, the definition here is incorrect. It should be the following: We write $f(n) = \omega(g(n))$, if there exists a constant
- \inlineMath{k > 0}  such that $g(n) \neq 0$ for all $n > k$ and $ \lim_{x \to \infty} f(n) / g(n) = + \infty$}
+We write $f(n) = \omega(g(n))$, if there exists a constant
+ \inlineMath{k > 0}  such that $g(n) \neq 0$ for all $n > k$ and $ \lim_{x \to \infty} f(n) / g(n) = + \infty$
  \end{definition}
 
- \linus{define $\Theta$}
+Big Theta ($\Theta$) is used to define a asymptotic tight bound on some function. 
+
+ \begin{definition}
+    We write $f(n) = \Theta(g(n))$, if there exists three positive constants, $c_1, c_2, n_0$ such that $c_1 g(n) \leq f(n) \leq c_2 g(n) \ \forall n \geq n_0$
+ \end{definition}
+
 
 
 %%------------------------------------------------------------------------------------
 %% Distributed system
-\subsection{Distributed system}
+\subsection{Distributed system} \label{preliminaries_distributed_system}
 
 A distributed system is a set of networked computers, which coordinate their actions through communicating by messages. We can define this system as a set of nodes, connected in a network, that collectively coordinate and execute tasks.
 
@@ -66,7 +69,7 @@ In Figure \ref{fig:ConsensusProblem} we can see an example of the explanation ab
 \end{figure}
 
 
-\linus{Elaborate figure \ref{fig:ConsensusProblem}}
+Figure \ref{fig:ConsensusProblem} presents a highly simplified version of a consensus algorithm. Node $v_1$ and $v_2$ propose \emph{proceed} to the algorithm and $v_3$ proposes \emph{abort} but immediately after crashes. The two nodes remaining nodes are correct and decide to \emph{proceed}.
 
 %%------------------------------------------------------------------------------------
 %% MAJORITY CONSENSUS
@@ -115,8 +118,5 @@ As stated previously, the systems scheduler is subject to some \emph{fairness} c
 \\\\ 
 The correctness of a population protocol can also be compared to the execution of the algorithm. During the execution of a population protocol, if the state of any given agent at any given time is \inlineMath{q}, then its output value will be \inlineMath{w(q)}. This means that the output of an agent may change during an execution. According to the fairness constraint explained previously, the scheduler of the protocol may schedule arbitrary interactions only up to a certain point. Correctness can also be phrased in a similar way: all agents must eventually produce the correct output, and continue doing so after that point in time.
 
-
-
-
-\linus{ADD ABOUT PARALELL TIME}
+Performance of population protocols are measured in \emph{time complexity} and \emph{space complexity}. Time complexity in a population protocol is how many interactions are required to reach the final correct state. The standard way to express this is in \emph{parallel time}, which is the total amount of interactions done in the system divided by the population of the system $n$. Space complexity for a population protocol is measured in how many different values an agent in the system must be able to store. 
 

@@ -128,13 +128,11 @@ The main results that Angluin et al. presents in \cite{angluinSimplePopulationPr
  \subsubsection{Introduction}
 Let $k$ be the amount of potential states in $Q$, excluding the blank state $b$. More formally, $k = |Q \setminus \{b\}|$. The protocol presented by Angluin et al. (\cite{angluinSimplePopulationProtocol2008}) in section \ref{3stateApproximatemajority} is shown to be capable of reaching consensus with a high probability in \inlineMath{O(n \log n)} when $k = 2$. While the convergence rate for this protocol (USD) for $k > 2$ has been studied in \emph{synchronous} systems previously in \cite{becchetti2015}, although the requirements for initial bias for that protocol are larger. It was not until very recently that the USD protocol was studied in \emph{asynchronous} systems for $k > 2$. In \cite{AspnesFastConverganceOfKOpinion2023}, Aspnes et al. manages to show that under some mild assumptions it is possible to present a bound on the convergence of the (USD) protocol in a asynchronous system. 
 
-\linus{Add part about how \cite{becchetti2015} had larger initial bias than this}
-
 \subsubsection{Notations}
 
 In general most notations in this paper are similar to the ones found in section \ref{notations_angluin_usd}, however due to the fact that \cite{AspnesFastConverganceOfKOpinion2023} explores higher dimensions as a consequence of $k > 2$, some additional notation is required.
 
-A configuration $C_t$ at time $t$ in the execution of the protocol has a corresponding configuration vector $\textbf{x}(t)$. \linus{State that this is similar to S from prelims} Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. When $t = 0$ we assume that $x_1(t) \geq x_2(t) \geq ... \geq x_k(t)$. 
+A configuration $C_t$ at time $t$ in the execution of the protocol has a corresponding configuration vector $\textbf{x}(t)$. The vector $\textbf{x}(t)$ is similar to $S_t$ from \ref{preliminaries_distributed_system}. Let the configuration $C_t$ at time $t$ be a represented by a vector $\textbf{x}(t) = (x_1(t), x_2(t), ..., x_k(t), u(t))$. The length of $\textbf{x}(t)$ is $k + 1$. $x_i(t)$ represents the amount of agents in the system with state $i$, where $1 \leq i \leq k$. The amount of agents with the blank state $b$ is represented by $u(t) = n - \sum_{i=1}^k x_i(t)$. When $t = 0$ we assume that $x_1(t) \geq x_2(t) \geq ... \geq x_k(t)$. 
 
 When $t > 0$ we call the index of the state with the largest population $max(t)$. The amount of agents of the largest state at time $t$ we define as $x_{max}(t)$. 
 
