@@ -2,7 +2,7 @@
 %% TEXT %%
 The population protocol in section \ref{Section3} solved the approximate majority problem. This, however, limits the use cases of the protocol as it requires some specific initial bias to converge to the correct solution.  In this section a stable nonuniform population protocol, presented by Doty et al. in \cite{dotyTimeSpaceOptimal2022}, that solves the \emph{exact} majority problem when $k = 2$. 
 
-\subsection{Notations}
+\subsection{Notation and definitions}
 
 A \emph{nonuniform} population protocol is one where the set of transitions used for a specific population size $n$, depends on the value $\lceil \log n \rceil$. Essentially this means that in a nonuniform protocol, for different population sizes $n$, different pairs of $Q$ and $\delta$ are allowed (up to $\lceil \log n \rceil$ combinations). In \cite{dotyTimeSpaceOptimal2022}, all of these combinations combined are referred to as a single protocol. 
 
@@ -44,12 +44,15 @@ The main theorem in \cite{dotyTimeSpaceOptimal2022} is slightly modified to crea
 The protocol that Doty et al. presents in \cite{dotyTimeSpaceOptimal2022} is capable of quickly solving the exact majority problem in $O(\log n)$ time with high probability using $\log \log n + O(1)$ bits of memory to store $O(\log n)$ different values. The protocol is nonuniform, meaning that all agents must have an estimate of $\lceil \log n \rceil$ embedded in the transition function. Essentially this means that the amount of values $L$ any agent must be capable of storing is a function of $n$. Doty et al. also discusses how the protocol would behave as a uniform protocol, however the protocol would no longer be space optimal due to it needing the memory to store $O(\log n \log \log n)$ different values in each agent. 
 
 In comparison to the undecided state dynamics protocol presented by Angluin et al. in \cite{angluinSimplePopulationProtocol2008} and discussed in section \ref{Section3}, the Nonuniform-Majority protocol solves the exact majority problem, making it much more usable. It is also as fast, reaching consensus with high probability in $O(\log n)$ time, as the USD protocol while solving the exact majority problem. The drawback of the quickness is the use of memory, as the Nonuniform-Majority protocol uses $O(\log \log n)$ bits of memory.  The protocol is also limited to $k = 2$, meaning the decision is only based on two input states. 
+\fda{the otbher drawback is that it depends on the input size $n$: in many cases, nodes should NOT know how many they are before the process starts}
 
 % ------------------------------------------------
 % GENERALIZAITON
 \subsection{Generalization}
 
-In a recent paper by Bankhamer et al. (\cite{bankhamerPopulationProtocolsExact2022}), the protocol discussed in \ref{Section4Results} was extended to support $k > 0$ initial states. While it is known that any always correct protocol requires memory capable of storing $\Omega(k^2)$ values per agent, Bankhamer et al. reduce this drastically by allowing some insignificant failure probability \cite{ongaroSearchUnderstandableConsensus}. 
+In a recent paper by Bankhamer et al. (\cite{bankhamerPopulationProtocolsExact2022}), the protocol discussed in \ref{Section4Results} was extended to support $k > 0$ initial states.
+\fda{We have to modify the occurrences of ``states'' in a coherent way to what I said before, specifying whether they are opinions}
+While it is known that any always correct protocol requires memory capable of storing $\Omega(k^2)$ values per agent, Bankhamer et al. reduce this drastically by allowing some insignificant failure probability \cite{ongaroSearchUnderstandableConsensus}. 
 
 \subsubsection{Protocols} \label{441}
 
@@ -65,7 +68,7 @@ The main result Bankhamer et al. presents in \cite{bankhamerPopulationProtocolsE
 
  \begin{theorem}\thlabel{theorem7}
     \textit{
-        Assume we have a population of size $n$ with $k$ initial opinions where $x_{max} > n^{\frac{1}{2 + \varepsilon}}$ for some small constant $\frac{1}{2} > \varepsilon > 0$. The \emph{improved algorithm} converges with high probability to the majority opinion in $O(\frac{n}{x_{max} \cdot \log n + \log^2 n})$ parallel time while requiring agents to be capable of storing $O(k \cdot \log \log n + \log n)$ different values.}
+        Assume we have a population of size $n$ with $k$ initial opinions where $x_{max} > n^{\frac{1}{2 + \varepsilon}}$ for some small constant $\frac{1}{2} > \varepsilon > 0$. The \emph{improved algorithm} converges with high probability to the majority opinion in $O(\frac{n}{x_{max} \cdot \log n + \log^2 n})$ time while requiring agents to be capable of storing $O(k \cdot \log \log n + \log n)$ different values.}
  \end{theorem} 
 
 The \emph{improved algorithm} in \cite{bankhamerPopulationProtocolsExact2022} expands the Nonuniform-Majority protocol from \thref{theorem6} (from \cite{dotyTimeSpaceOptimal2022}) to create a protocol for $k > 2$ number of initial states. This protocol solves the exact majority problem with high probability quickly while only requiring the agents to be able to store $O(k + \log n)$ values. 

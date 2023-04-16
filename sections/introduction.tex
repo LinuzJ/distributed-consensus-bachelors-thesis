@@ -1,6 +1,8 @@
 \section{Introduction}
 \thispagestyle{empty}
 %% Intro
+
+\fda{I know we removed subsection headers, but now I feel it is better to divide the intro into subsections}
 A distributed system can be described as a collection of computing entities, also called agents, connected in a shared network which perform computations and exchange messages with each other in order to reach some global task \cite{Coulouris_systems_2005}. Distributed systems are a crucial part of the modern digital infrastructure that the world heavily relies on. They enable large, scalable and low-latency systems for a wide range of applications and audiences. One such system is a distributed database where the responsibility of storing the data is shared across a set of computers. To achieve a shared goal among the agents, they often need to reach a common agreement. An agreement here means that all agents involved have reached a decision on whether to do something or not. Distributed consensus is a fundamental problem in distributed computing that asks the distributed system to achieve an agreement respecting some properties. Consensus is crucial for reaching and maintaining data consistency, ensuring fault tolerance and enabling cooperation between the agents in the system. \cite{Lynch_distributed_2017}
 
 %% Byzantine generals problem
@@ -26,4 +28,4 @@ Population protocols are a modern model in distributed computing that were intro
 
 The goal of this thesis is to clearly define what the problem of distributed consensus is, as well as discuss the existing approaches and algorithms to the problem, focusing on population protocols.
 
-This thesis is divided into two parts. The first part will discuss the introduction of population protocols, their place in the domain of consensus algorithms, as well as go through the first population protocol presented by Angluin \cite{angluinSimplePopulationProtocol2008}, as well as the generalized version of that same protocol \cite{AspnesFastConverganceOfKOpinion2023}. The second part will cover a space and time optimized population protocol (\cite{dotyTimeSpaceOptimal2022}) as well as generalized version (\cite{bankhamerPopulationProtocolsExact2022}) of that protocol. 
+This thesis is divided into two parts. The first part will \fda{not will, just discusses} discuss the introduction of population protocols, their place in the domain of consensus algorithms, as well as go through the first population protocol presented by Angluin \cite{angluinSimplePopulationProtocol2008}, as well as the generalized version of that same protocol \cite{AspnesFastConverganceOfKOpinion2023}. The second part will cover a space and time optimized population protocol (\cite{dotyTimeSpaceOptimal2022}) as well as generalized version (\cite{bankhamerPopulationProtocolsExact2022}) of that protocol. 
