@@ -41,7 +41,7 @@
 
 \place{Espoo}
 
-\date{20 January 2023}
+\date{\today}
 
 \supervisor{Postdoctoral researcher  \ Francesco d'Amore}
 
@@ -55,13 +55,11 @@
 
 %% THE ENGLISH ABSTRACT:
 %% Thesis keywords:
-\keywords{Population protocol \spc Nonuniform-Majority \spc Distributed systems}
+\keywords{Population protocol\spc Consensus Problem\spc Distributed algorithms\spc Majority consensus\spc Byzantine agreement}
 
 %% The abstract text. This text is included in the metadata of the pdf file as well
 %% as the abstract page.
-\thesisabstract{
-    The field of population protocols has seen recent progress in solving the consensus problem, specifically the approximate and exact majority problems. The Undecided State Protocol and Nonuniform-Majority Protocol were introduced as solutions for systems with $k = 2$ opinions, with the latter being optimized for time and space complexity. Generalizations were later developed for $k > 2$ opinions. 
-}
+
 
 \copyrighttext{Copyright \noexpand\copyright\ \number\year\ \ThesisAuthor}
 {Copyright \copyright{} \number\year{} \ThesisAuthor}
@@ -86,21 +84,21 @@
 
 %% ENGLISH ABSTRACT
 \begin{abstractpage}[english]
-    \abstracttext{}
+    The field of population protocols has seen recent progress in solving the consensus problem. In this literature review some of the significant population protocols solving these issues, as well as recent improvements to these are discussed. The Undecided State Protocol solves the approximate majority problem in $O(n \log n)$ time with high probability provided that the initial majority is at least $\omega(\sqrt{n} \log n)$. It is however limited to $k = 2$, which is two possible opinions. Recent progress improved this protocol to solve the approximate majority problem with $k > 2$ initial opinions. Additionally, the Nonuniform-Majority protocol that solves the exact majority problem for $k = 2$ with high probability is discussed. This protocol is capable of reaching consensus in $O(\log n)$ time, however, the memory usage is not constant using $O(\log n)$ states ($\log \log n + O(1)$ bits of memory). The generalization of this protocol to solve the exact majority problem for $k > 2$ is also discussed.
 \end{abstractpage}
 
 %% Force new page so that the Swedish abstract starts from a new page
 \newpage
 
 %% SWEDISH ABSTRACT.
-\thesistitle{Distribuerad konsensus genom populations protokoller}
-\supervisor{University Lecturer  \ Henrik Wallén}
-\advisor{Postdoctoral researcher  \ Francesco d'Amore} 
+\thesistitle{Distribuerad konsensus med hjälp av populations protokoller}
+\supervisor{Universitets Lektor  \ Henrik Wallén}
+\advisor{Postdoktoral forskare  \ Francesco d'Amore} 
 \degreeprogram{Datateknik}
 \major{Datateknik}
-\keywords{Distribuerad konsensus}
+\keywords{Befolkningsprotokoll\spc Konsensusproblem\spc Distribuerade algoritmer\spc Majoritetsövernskommelse\spc Byzantine övernskommelse}
 \begin{abstractpage}[swedish]
-    asdasdasdds
+    Sammandrag på svenska
 \end{abstractpage}
 
 %% TABLE OF CONTENTS
